@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="316.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.HistoriqueReservationFlightController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;" />
+
+        <!-- Table for Flights -->
+        <TableView fx:id="tableView" editable="true" layoutX="205.0" layoutY="97.0" prefHeight="303.0" prefWidth="662.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px; -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="97.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="120.0" text="Id" />
+                <TableColumn fx:id="colDate" prefWidth="100.0" text="Date" />
+                <TableColumn fx:id="colNbrPart" prefWidth="150.0" text="Nombre Participants" />
+                <TableColumn fx:id="colModepaiemnt" prefWidth="100.0" text="Mode Paiement" />
+                <TableColumn fx:id="colAction" prefWidth="174.0" text="Actions" />
+            </columns>
+        </TableView>
+      <Button fx:id="RetourButton" layoutX="205.0" layoutY="14.0" onAction="#retour" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Retour" />
+      <Label layoutX="405.0" layoutY="61.0" style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;" text="Historiques des Reservations" />       		
+    </children>
+</AnchorPane>
