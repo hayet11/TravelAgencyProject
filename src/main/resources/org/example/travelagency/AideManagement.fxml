@@ -1,27 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="700.0"
-            xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.example.travelagency.AideController"
-            stylesheets="@styles.css">
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0"
+            prefWidth="1280.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="org.example.travelagency.AideController">
+
     <children>
-        <TableView fx:id="tableAide" layoutX="20.0" layoutY="20.0" prefHeight="250.0" prefWidth="660.0">
-            <columns>
-                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="colQuestion" text="Question" prefWidth="300"/>
-                <TableColumn fx:id="colReponse" text="Réponse" prefWidth="300"/>
-            </columns>
-        </TableView>
+        <!-- Menu vertical -->
+        <AnchorPane prefWidth="200.0" prefHeight="800.0" style="-fx-background-color: #023047;">
+            <children>
+                <Label layoutX="20.0" layoutY="30.0" text="Menu"
+                       style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
 
-        <Label layoutX="20.0" layoutY="290.0" text="Question :" styleClass="label"/>
-        <TextField fx:id="txtQuestion" layoutX="100.0" layoutY="285.0" prefWidth="580.0" styleClass="input"/>
+                <VBox layoutX="10.0" layoutY="80.0" spacing="15.0">
+                    <children>
+                        <Hyperlink text="Gestion agents"
+                                   onAction="#changerVue" userData="listeAgents.fxml"
+                                   style="-fx-text-fill: #ffffff; -fx-font-size: 14px;"/>
+                        <Hyperlink text="Gestion aide"
+                                   disable="true"
+                                   style="-fx-text-fill: #8ECAE6; -fx-font-size: 14px;"/>
 
-        <Label layoutX="20.0" layoutY="330.0" text="Réponse :" styleClass="label"/>
-        <TextField fx:id="txtReponse" layoutX="100.0" layoutY="325.0" prefWidth="580.0" styleClass="input"/>
+                    </children>
+                </VBox>
 
-        <Button fx:id="btnAjouter" layoutX="100.0" layoutY="370.0" mnemonicParsing="false" text="Ajouter" onAction="#ajouterAide" styleClass="btn-primary"/>
-        <Button fx:id="btnModifier" layoutX="200.0" layoutY="370.0" mnemonicParsing="false" text="Modifier" onAction="#modifierAide" styleClass="btn-secondary"/>
-        <Button fx:id="btnSupprimer" layoutX="300.0" layoutY="370.0" mnemonicParsing="false" text="Supprimer" onAction="#supprimerAide" styleClass="btn-danger"/>
+                <Hyperlink layoutX="10.0" layoutY="750.0" text="Déconnexion" onAction="#changerVue"
+                           userData="Login.fxml"
+                           style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            </children>
+        </AnchorPane>
+
+
+        <!-- Contenu principal -->
+        <AnchorPane layoutX="200.0" prefHeight="800.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;">
+            <children>
+                <ComboBox fx:id="cbFiltre" layoutX="850.0" layoutY="70.0" prefWidth="200.0"
+                          onAction="#filtrerQuestions">
+                </ComboBox>
+
+
+                <!-- En-tête avec le titre -->
+                <Label layoutX="40.0" layoutY="30.0" text="Gestion des FAQ"
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #023047;"/>
+
+
+                <!-- Tableau pour afficher les FAQs -->
+                <TableView fx:id="tableAide" layoutX="40.0" layoutY="110.0" prefHeight="400.0" prefWidth="1000.0">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+                        <TableColumn fx:id="colQuestion" text="Question" prefWidth="450"/>
+                        <TableColumn fx:id="colReponse" text="Réponse" prefWidth="450"/>
+                    </columns>
+                </TableView>
+
+                <!-- Formulaire d'ajout/modification -->
+                <VBox layoutX="40.0" layoutY="520.0" spacing="15.0">
+                    <children>
+                        <TextField fx:id="txtQuestion" promptText="Saisir une question" prefWidth="800.0"
+                                   style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
+                                          -fx-border-radius: 8px; -fx-padding: 12px;"/>
+
+                        <TextField fx:id="txtReponse" promptText="Saisir une réponse" prefWidth="800.0"
+                                   style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
+                                          -fx-border-radius: 8px; -fx-padding: 12px;"/>
+
+                        <HBox layoutX="20.0" layoutY="730.0" spacing="20.0">
+                            <children>
+                                <Button fx:id="btnAjouter" text="Ajouter" onAction="#ajouterAide"
+                                        style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+
+                                <Button fx:id="btnModifier" text="Modifier" onAction="#modifierAide"
+                                        style="-fx-background-color: #8ECAE6; -fx-text-fill: #023047; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+
+                                <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerAide"
+                                        style="-fx-background-color: #FF0000; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

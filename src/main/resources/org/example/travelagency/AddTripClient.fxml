@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.AddTripClient">
+    <children>
+        <Label layoutX="328.0" layoutY="182.0" text="Nombre de places :" />
+        <TextField fx:id="numPlacesField" layoutX="357.0" layoutY="218.0" prefWidth="50.0" text="1" />
+        <Button fx:id="increaseButton" layoutX="419.0" layoutY="218.0" text="+" />
+        <Button fx:id="decreaseButton" layoutX="318.0" layoutY="218.0" text="-" />
+        <Button fx:id="validateButton" layoutX="323.0" layoutY="274.0" text="Valider" />
+        <Button fx:id="cancelButton" layoutX="382.0" layoutY="274.0" text="Annuler" />
+        <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #023047;" />
+        <Label layoutX="263.0" layoutY="135.0" text="Saisissez le nombre de places a reserver dans cette vol" />
+    </children>
+</AnchorPane>

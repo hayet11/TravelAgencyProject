@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.ListFlightController">
+<AnchorPane prefHeight="400.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.FlightClientController">
     <children>
         <!-- Sidebar -->
         <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;" />
@@ -29,9 +29,10 @@
 
         <Label layoutX="210.0" layoutY="26.0" style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;" text="Rechercher par l'aéroport d'Arrivée :" />
         <TextField fx:id="idarptdp" layoutX="509.0" layoutY="27.0" prefHeight="25.0" prefWidth="172.0" />
-
         <!-- Search Button -->
-        <Button fx:id="searchButton" onAction="#search" layoutX="730.0" layoutY="25.0" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rechercher" />
-        <Button fx:id="ajouterbutton" layoutX="1103.0" layoutY="25.0" onAction="#onAddButtonClick" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Ajouter" />
+        <Button fx:id="searchButton" layoutX="730.0" layoutY="25.0" onAction="#search" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rechercher" />
+
+        <Button fx:id="HistoriqueButton" layoutX="1027.0" layoutY="25.0" onAction="#historique" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Consulter Historiques" />
+
     </children>
 </AnchorPane>

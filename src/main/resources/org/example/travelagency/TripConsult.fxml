@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="530.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.TripConsultController">
+
+    <!-- VBox pour afficher les détails du voyage -->
+    <VBox layoutX="20" layoutY="20" prefHeight="510.0" prefWidth="478.0" spacing="15">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Détails du Voyage" />
+
+        <Label fx:id="destinationLabel" text="Destination: " />
+        <Label fx:id="dateDepartLabel" text="Date de départ: " />
+        <Label fx:id="tariffLabel" text="Tarif: " />
+        <Label fx:id="guideLabel" text="Guide disponible: " />
+
+        <Label text="Itinéraires:" />
+        <TextArea fx:id="itinerariesArea" editable="false" prefHeight="60" wrapText="true" />
+
+        <Label text="Points d'intérêt:" />
+        <TextArea fx:id="pointsOfInterestArea" editable="false" prefHeight="60" wrapText="true" />
+
+        <Label text="Description:" />
+        <TextArea fx:id="descriptionArea" editable="false" prefHeight="80" wrapText="true" />
+    </VBox>
+
+    <!-- AnchorPane secondaire, à gauche de la VBox -->
+    <AnchorPane layoutX="512.0" prefHeight="530.0" prefWidth="207.0" style="-fx-background-color: #023047; -fx-padding: 10px; -fx-border-radius: 10px;" />
+
+</AnchorPane>

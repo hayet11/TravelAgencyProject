@@ -2,15 +2,23 @@ package Entities;
 
 import enums.PartnerCategory;
 import enums.PartnerType;
+import javafx.beans.property.*;
 
 import java.util.Objects;
 
 public class Partner {
+    //pour FX
+    private final IntegerProperty ID = new SimpleIntegerProperty();
+    private final StringProperty Name = new SimpleStringProperty();
+    private final ObjectProperty<PartnerCategory> Category = new SimpleObjectProperty<>();
+    private final ObjectProperty<PartnerType> Type = new SimpleObjectProperty<>();
+    private final StringProperty Email = new SimpleStringProperty();
+    private final StringProperty Phone = new SimpleStringProperty();
+    private final StringProperty Address = new SimpleStringProperty();
     private int id;
     private String name;
     private PartnerCategory category;
     private PartnerType type;
-    private String contact;
     private String email;
     private String phone;
     private String address;
@@ -19,15 +27,23 @@ public class Partner {
     }
 
     public Partner(String name, int id, PartnerCategory category, PartnerType type,
-                   String contact, String email, String phone, String address) {
+                   String email, String phone, String address) {
         this.name = name;
         this.id = id;
         this.category = category;
         this.type = type;
-        this.contact = contact;
         this.email = email;
         this.phone = phone;
         this.address = address;
+
+        //pour FX
+        this.Name.set(name);
+        this.ID.set(id);
+        this.Category.set(category);
+        this.Type.set(type);
+        this.Email.set(email);
+        this.Phone.set(phone);
+        this.Address.set(address);
     }
 
     public int getId() {
@@ -70,14 +86,6 @@ public class Partner {
         this.type = type;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -101,11 +109,42 @@ public class Partner {
                 ", name='" + name + '\'' +
                 ", category=" + category +
                 ", type=" + type +
-                ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public int getID() {
+        return ID.get();
+    }
+
+    public IntegerProperty IDProperty() {
+        return ID;
+    }
+
+    public StringProperty nameProperty() {
+        return Name;
+    }
+
+    public ObjectProperty<PartnerCategory> categoryProperty() {
+        return Category;
+    }
+
+    public ObjectProperty<PartnerType> typeProperty() {
+        return Type;
+    }
+
+    public StringProperty emailProperty() {
+        return Email;
+    }
+
+    public StringProperty phoneProperty() {
+        return Phone;
+    }
+
+    public StringProperty addressProperty() {
+        return Address;
     }
 
     @Override
