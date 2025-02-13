@@ -167,4 +167,18 @@ public class BookingListController {
         }
     }
 
+    @FXML
+    private void changerVue(ActionEvent event) {
+        MenuItem menuItem = (MenuItem) event.getSource();
+        String fxmlFile = (String) menuItem.getUserData();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            AnchorPane pane = loader.load();
+            tableView.getScene().setRoot(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

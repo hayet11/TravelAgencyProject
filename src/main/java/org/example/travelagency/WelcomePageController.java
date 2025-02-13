@@ -1,17 +1,18 @@
 package org.example.travelagency;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import Services.Impl.AgentServiceImpl;
 import Services.Impl.VolServicesImpl;
 import Services.Impl.VoyageOrganiseImpl;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -104,5 +105,24 @@ public class WelcomePageController {
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
+    }
+    @FXML
+    private void changerVue(ActionEvent event) {
+        try {
+            if (event.getSource() instanceof MenuItem) {
+                MenuItem item = (MenuItem) event.getSource();
+                String fxmlFile = (String) item.getUserData(); // Correction ici
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Parent newView = loader.load();
+
+                AnchorPane rootPane = (AnchorPane) statsTable.getScene().getRoot();
+                rootPane.getChildren().setAll(newView);
+            } else {
+                System.out.println("L'élément source n'est pas un MenuItem mais un " + event.getSource().getClass());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+//            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger la page", "Une erreur est survenue lors du chargement de la page.");
+        }
     }
 }
