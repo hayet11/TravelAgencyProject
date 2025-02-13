@@ -13,8 +13,8 @@ public class EmailService implements IEmailService {
     public void sendEmail(String recipientEmail, String subject, String messageBody) {
         // Configuration du serveur SMTP de Gmail
         String host = "smtp.gmail.com";
-        final String senderEmail = "fkirihayet111@gmail.com";
-        final String appPassword = "kurc ofmr gehw qcuc";
+        final String senderEmail = "testtravel546@gmail.com";
+        final String appPassword = "jszi snsw wdcv buvz";
 
         // Propriétés de la connexion
         Properties properties = new Properties();
@@ -22,6 +22,7 @@ public class EmailService implements IEmailService {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com"); // Ajout de cette ligne
 
         // Authentification avec le mot de passe d'application
         Session session = Session.getInstance(properties, new Authenticator() {

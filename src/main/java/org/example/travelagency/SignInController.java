@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+
 public class SignInController {
     @FXML
     private TextField loginField;
@@ -53,18 +55,71 @@ public class SignInController {
         alert.showAndWait();
     }
     private void redirigerUtilisateur(Utilisateur utilisateur) {
+        String fxmlFile = ""; 
+
         switch (utilisateur.getRole()) {
             case AGENT:
-                System.out.println("Redirection vers l'interface Agent...");
+                fxmlFile = "AgentInterface.fxml";  // Remplace par le fichier FXML de l'interface Agent
                 break;
             case CLIENT:
-                System.out.println("Redirection vers l'interface Client...");
+                fxmlFile = "L istFlight.fxml";  // Remplace par le fichier FXML de l'interface Client
                 break;
             case SUPPORT_TECH:
-                System.out.println("Redirection vers l'interface Support Technique...");
+                fxmlFile = "SupportTechInterface.fxml";  // Remplace par le fichier FXML de l'interface Support Technique
                 break;
             default:
                 System.out.println("Aucun rôle défini !");
+                return;  // Si aucun rôle défini, on ne redirige pas
+        }
+
+        // Charge l'interface correspondante
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
+            stage.setScene(scene);
+            stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger l'interface de l'utilisateur.", Alert.AlertType.ERROR);
         }
     }
+
+    @FXML
+    private void handleForgotPassword() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ForgotPassword.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) loginButton.getScene().getWindow(); // Tu peux utiliser un autre élément de la scène actuelle pour récupérer le stage
+            stage.setScene(scene);
+            stage.setTitle("Mot de passe oublié");
+            stage.setWidth(1280);  // Largeur de la fenêtre
+            stage.setHeight(800);  // Hauteur de la fenêtre
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handleCreateNewAccount(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) loginButton.getScene().getWindow(); // Récupérer la fenêtre actuelle
+            stage.setScene(scene);
+            stage.setTitle("Créer un nouveau compte");
+            stage.setWidth(1280);  // Largeur de la fenêtre
+            stage.setHeight(800);  // Hauteur de la fenêtre
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

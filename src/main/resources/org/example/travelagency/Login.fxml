@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="744.0"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.travelagency.LoginController">
+            fx:controller="org.example.travelagency.SignInController">
 
    <children>
       <!-- Panneau gauche -->
@@ -39,12 +39,12 @@
                                               -fx-border-radius: 8px; -fx-padding: 10px;"/>
 
                   <!-- Centrage du bouton -->
-                  <Button fx:id="loginButton" text="Login" onAction="#loginAgent"
+                  <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
                           style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
                   <!-- Ajout d'une VBox pour centrer les liens -->
                   <VBox spacing="5.0" alignment="CENTER">
-                     <Hyperlink text="Forgot password?" style="-fx-text-fill: #023047;" />
-                     <Hyperlink text="Create new account" style="-fx-text-fill: #023047;" />
+                     <Hyperlink text="Forgot password?" onAction="#handleForgotPassword" style="-fx-text-fill: #023047;" />
+                     <Hyperlink text="Create new account" onAction="#handleCreateNewAccount" style="-fx-text-fill: #023047;" />
                   </VBox>
                </children>
             </VBox>

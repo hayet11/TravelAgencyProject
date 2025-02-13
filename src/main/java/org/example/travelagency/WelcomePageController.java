@@ -1,6 +1,6 @@
 package org.example.travelagency;
 
-import Services.Impl.AgentServiceImpl;
+import Services.Impl.UtilisateurServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,7 +34,7 @@ public class WelcomePageController {
 
     @FXML
     private MenuItem TripList;
-
+/*
 //La premiere methode a executer
     public void initialize() {
         loadData();
@@ -42,7 +42,7 @@ public class WelcomePageController {
 
     private void loadData() {
 
-        AgentServiceImpl agentService = new AgentServiceImpl();
+        UtilisateurServiceImpl agentService = new UtilisateurServiceImpl();
         try {
             travelCountLabel.setText(String.valueOf(agentService.StatsBookingToDay()));
         } catch (Exception e) {
@@ -77,6 +77,8 @@ public class WelcomePageController {
         }
 //        Name.setText();
     }
+
+ */
 
     public void setUserName(String userName) {
         Name.setText(userName);

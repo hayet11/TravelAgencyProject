@@ -166,7 +166,7 @@ public class UtilisateurServiceImpl {
 
 
     // ➤ Vérifier si un email existe déjà
-    public boolean emailExiste(String email) {
+    public  boolean emailExiste(String email) {
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, email);
@@ -188,6 +188,10 @@ public class UtilisateurServiceImpl {
         }
         return ajouterUtilisateur(utilisateur); // Réutilisation de la méthode ajouter()
     }
+
+
+
+
 
 }
 
