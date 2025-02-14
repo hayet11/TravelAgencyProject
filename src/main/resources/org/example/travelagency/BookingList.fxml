@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="402.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.BookingListController">
+    <children>
+        <!-- MenuBar -->
+        <MenuBar layoutX="0" layoutY="0" prefWidth="773.0">
+            <menus>
+                <Menu text="Vols">
+                    <MenuItem text="Liste des vols" onAction="#changerVue" userData="ListFlight.fxml" />
+                    <MenuItem text="Ajouter un vol" onAction="#changerVue" userData="AddFlight.fxml" />
+                </Menu>
+                <Menu text="Voyages">
+                    <MenuItem text="Tous les voyages" onAction="#changerVue" userData="BookingList.fxml" />
+                    <MenuItem text="Nouveau voyage" onAction="#changerVue" userData="AddTripForm.fxml" />
+                </Menu>
+                <Menu text="Séjours">
+                    <MenuItem text="Hôtels"/>
+                    <MenuItem text="Activités"/>
+                </Menu>
+                <Menu text="Gerer partenaires">
+
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <!-- Sidebar -->
+        <AnchorPane layoutX="0" layoutY="30" prefHeight="372.0" prefWidth="200.0"
+                    style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;" />
+
+        <!-- Table for Bookings -->
+        <TableView fx:id="tableView" layoutX="220.0" layoutY="123.0" prefHeight="277.0"
+                   style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px;
+                          -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);"
+                   AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0"
+                   AnchorPane.topAnchor="123.0" editable="true">
+            <columns>
+                <TableColumn fx:id="dateDepartCol" prefWidth="75.0" text="Date Départ" />
+                <TableColumn fx:id="itineraryCol" prefWidth="75.0" text="Itinéraires" />
+                <TableColumn fx:id="guideCol" prefWidth="75.0" text="Avec Guide?" />
+                <TableColumn fx:id="tariffCol" prefWidth="75.0" text="Tarif" />
+                <TableColumn fx:id="descriptionCol" prefWidth="100.0" text="Description" />
+                <TableColumn fx:id="actionCol" prefWidth="160.0" text="Actions"/>
+            </columns>
+        </TableView>
+
+        <!-- Date Picker -->
+        <DatePicker fx:id="datePicker" layoutX="370.0" layoutY="52.0"
+                    style="-fx-font-size: 14px; -fx-background-color: #ffffff;
+                           -fx-border-radius: 5px; -fx-text-fill: #023047;" />
+
+        <!-- Label for Date Picker -->
+        <Label layoutX="210.0" layoutY="56.0"
+               style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;"
+               text="Rechercher par date" />
+
+        <!-- Search Button -->
+        <Button fx:id="searchButton" layoutX="590.0" layoutY="52.0" onAction="#onSearch"
+                style="-fx-background-color: #0288d1; -fx-text-fill: white;
+                       -fx-font-size: 14px; -fx-border-radius: 5px;"
+                text="Rechercher" />
+    </children>
+</AnchorPane>

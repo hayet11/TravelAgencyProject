@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1280.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="org.example.travelagency.AideUserController">
+    <children>
+        <!-- Menu vertical -->
+        <AnchorPane prefWidth="200.0" prefHeight="800.0" style="-fx-background-color: #023047;">
+            <children>
+                <Label layoutX="20.0" layoutY="30.0" text="Menu"
+                       style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <VBox layoutX="10.0" layoutY="80.0" spacing="15.0">
+                    <children>
+                        <Hyperlink text="Aide"
+                                   disable="true"
+                                   style="-fx-text-fill: #8ECAE6; -fx-font-size: 14px;"/>
+                    </children>
+                </VBox>
+
+                <Hyperlink layoutX="10.0" layoutY="750.0" text="Déconnexion" onAction="#changerVue"
+                           userData="Login.fxml"
+                           style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            </children>
+        </AnchorPane>
+
+        <!-- Contenu principal -->
+        <VBox layoutX="200.0" prefHeight="800.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;"
+              spacing="20.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <children>
+                <!-- Barre de recherche -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <TextField fx:id="txtRecherche" promptText="Rechercher une question" prefWidth="400.0"
+                                   style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6; -fx-border-radius: 8px; -fx-padding: 10px;"/>
+                        <Button text="Rechercher" onAction="#rechercherQuestion"
+                                style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                        <Button text="Réinitialiser" onAction="#resetPage"
+                                style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                    </children>
+                </HBox>
+
+                <!-- Tableau pour afficher les FAQs -->
+                <TableView fx:id="tableFAQ" prefHeight="400.0" prefWidth="880.0">
+                    <columns>
+                        <TableColumn fx:id="colQuestion" text="Question" prefWidth="440"/>
+                        <TableColumn fx:id="colReponse" text="Réponse" prefWidth="440"/>
+                    </columns>
+                </TableView>
+
+                <!-- Formulaire pour poser une question -->
+                <VBox spacing="15.0" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <TextField fx:id="txtNouvelleQuestion" promptText="Posez votre question ici..."
+                                   prefWidth="800.0"
+                                   style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6; -fx-border-radius: 8px; -fx-padding: 12px;"/>
+                        <Button text="Envoyer" onAction="#envoyerQuestion" prefWidth="150.0" prefHeight="50.0"
+                                style="-fx-background-color: #FFB703; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

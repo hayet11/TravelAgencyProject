@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.example.travelagency.UpdateFlightController?>
+
+
+<AnchorPane prefHeight="677.0" prefWidth="450.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.UpdateFlightController">
+    <VBox alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="613.0" prefWidth="400.0" spacing="15">
+        <!-- Title Label -->
+        <Label text=" Vol Update" textFill="#023047" />
+
+        <!-- Date d'arrivée -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Date d'arrivée :" textFill="#023047" />
+            <DatePicker fx:id="dateArriveePicker" />
+        </HBox>
+
+        <!-- Compagnie -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Compagnie :" textFill="#023047" />
+            <TextField fx:id="compagnieField" promptText="Entrez la compagnie" />
+        </HBox>
+
+        <!-- Aéroport de départ -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Aéroport de départ :" textFill="#023047" />
+            <TextField fx:id="aeroportDepartField" promptText="Entrez l'aéroport de départ" />
+        </HBox>
+
+        <!-- Aéroport d'arrivée -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Aéroport d'arrivée :" textFill="#023047" />
+            <TextField fx:id="aeroportArriveeField" promptText="Entrez l'aéroport d'arrivée" />
+        </HBox>
+
+        <!-- Heure de départ -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Heure de départ :" textFill="#023047" />
+            <TextField fx:id="heureDepartField" promptText="HH:MM" />
+        </HBox>
+
+        <!-- Heure d'arrivée -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Heure d'arrivée :" textFill="#023047" />
+            <TextField fx:id="heureArriveeField" promptText="HH:MM" />
+        </HBox>
+
+        <!-- Type -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="aller" textFill="#023047" />
+            <CheckBox fx:id="allerCheckBox" />
+            <!--   <Label text="aller_retour" textFill="#023047" />
+            <CheckBox fx:id="allerRetourCheckBox" /> -->
+            <Label text="Retour" textFill="#023047" />
+            <CheckBox fx:id="retourCheckBox" />
+        </HBox>
+
+        <!-- Tarif -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Tarif :" textFill="#023047" />
+            <TextField fx:id="tariffField" promptText="Entrez le tarif" />
+        </HBox>
+
+        <!-- Description -->
+        <Label text="Description :" textFill="#023047" />
+        <TextArea fx:id="descriptionField" prefHeight="175.0" prefWidth="360.0" promptText="Entrez la description" />
+
+        <!-- Buttons -->
+        <HBox alignment="CENTER" spacing="20">
+            <Button onAction="#save" style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-size: 14px;" text="Enregistrer" />
+            <Button fx:id="delete" onAction="#cancel" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-size: 14px;" text="Annuler" />
+        </HBox>
+    </VBox>
+</AnchorPane>

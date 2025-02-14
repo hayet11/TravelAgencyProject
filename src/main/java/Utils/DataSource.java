@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class DataSource {
 
     private static DataSource data;
-    private Connection conn;
+    private Connection con;
     private  String url = "jdbc:mysql://localhost:3306/agence_bd";
     private  String user = "root";
     private  String pass = "";
@@ -14,7 +14,7 @@ public class DataSource {
     private DataSource() {
 
         try {
-            conn=DriverManager.getConnection(url,user,pass);
+            con=DriverManager.getConnection(url,user,pass);
             System.out.println("connexion établie");
         } catch (SQLException e) {
             System.out.println(e);
@@ -29,6 +29,6 @@ public class DataSource {
     }
 
     public Connection getConn() {
-        return conn;
+        return con;
     }
 }
