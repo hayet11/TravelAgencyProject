@@ -8,6 +8,15 @@ public class VoyageOrganise extends Offre {
     private Date dateDepart;
     private List<String> pointsIneret;
     private boolean guideDisponible;
+    private int NBPlacDisponible;
+
+    public int getNBPlacDisponible() {
+        return NBPlacDisponible;
+    }
+
+    public void setNBPlacDisponible(int NBPlacDisponible) {
+        this.NBPlacDisponible = NBPlacDisponible;
+    }
 
     public List<String> getItineraires() {
         return itineraires;
@@ -45,12 +54,12 @@ public class VoyageOrganise extends Offre {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof VoyageOrganise that)) return false;
-        return guideDisponible == that.guideDisponible && Objects.equals(itineraires, that.itineraires) && Objects.equals(dateDepart, that.dateDepart) && Objects.equals(pointsIneret, that.pointsIneret);
+        return guideDisponible == that.guideDisponible && Objects.equals(itineraires, that.itineraires) && Objects.equals(dateDepart, that.dateDepart) && Objects.equals(pointsIneret, that.pointsIneret)&& Objects.equals(NBPlacDisponible,that.NBPlacDisponible);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itineraires, dateDepart, pointsIneret, guideDisponible);
+        return Objects.hash(itineraires, dateDepart, pointsIneret, guideDisponible,NBPlacDisponible);
     }
 
     @Override
@@ -62,6 +71,8 @@ public class VoyageOrganise extends Offre {
                 ", dateDepart=" + dateDepart +
                 ", pointsIneret=" + pointsIneret +
                 ", guideDisponible=" + guideDisponible +
+                ", Nombre de place disponible=" + NBPlacDisponible +
+
                 '}';
     }
     public String getItinerairesAsString() {

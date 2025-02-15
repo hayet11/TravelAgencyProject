@@ -7,10 +7,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="402.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.BookingListController">
+<AnchorPane prefHeight="402.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.ListVoyageClientController">
     <children>
         <!-- Sidebar -->
-        <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;" />
+        <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;">
+            <children>
+                <Label layoutX="28.0" layoutY="192.0" text="Historique des reservations" textFill="WHITE" />
+            </children></AnchorPane>
 
         <!-- Table for Bookings -->
         <TableView fx:id="tableView" editable="true" layoutX="220.0" layoutY="93.0" prefHeight="307.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px; -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="93.0">
@@ -30,10 +33,6 @@
         <!-- Label for Date Picker -->
         <Label layoutX="210.0" layoutY="26.0" style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;" text="Rechercher par date" />
 
-        <!-- Search Button -->
         <Button fx:id="searchButton" layoutX="590.0" layoutY="22.0" onAction="#onSearch" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rechercher" />
-
-        <!-- Refresh Button -->
-        <Button fx:id="refreshButton" layoutX="685.0" layoutY="23.0" onAction="#onSearch" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rafraîchir" />
     </children>
 </AnchorPane>

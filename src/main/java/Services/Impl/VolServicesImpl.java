@@ -6,6 +6,7 @@ import Utils.DataSource;
 import enums.TypeVol;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,4 +113,54 @@ public class VolServicesImpl implements IVolServices {
         }
         return vols;
     }
+    public int StatsFlightToDay() throws SQLException {
+        LocalDate today = LocalDate.now();
+        String req = "SELECT count(*) AS NB FROM `reservation` where `date`=? and `typeOffre`=?";
+        PreparedStatement pre = con.prepareStatement(req);
+        pre.setDate(1,Date.valueOf(today));
+        pre.setString(2,"Vol");
+        ResultSet rs = pre.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("NB");
+        }
+        return 0;    }
+
+    @Override
+    public int StatsFlightGneral() throws SQLException {
+        String req = "SELECT count(*) AS NB FROM `reservation` WHERE `typeOffre` = ?";
+        int nbFlights = 0;
+
+        try (PreparedStatement pre = con.prepareStatement(req)) {
+            pre.setString(1, "Vol");
+
+            try (ResultSet rs = pre.executeQuery()) {
+                if (rs.next()) {
+                    nbFlights = rs.getInt("NB");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Erreur lors de la récupération du nombre de vols", e);
+        }
+
+        return nbFlights;
+    }
+
+    @Override
+    public float SumFlights() throws SQLException {
+        String req = "SELECT SUM(tarif) AS SUM FROM `vol`";
+        int sum = 0;
+
+        try (PreparedStatement pre = con.prepareStatement(req)) {
+            try (ResultSet rs = pre.executeQuery()) {
+                if (rs.next()) {
+                    sum = rs.getInt("SUM");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Erreur lors de la récupération du nombre de voyages organisés", e);
+        }
+
+        return sum+=sum*0.5;    }
 }

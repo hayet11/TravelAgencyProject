@@ -1,5 +1,8 @@
 package Entities;
 
+import enums.Role;
+import javafx.beans.property.*;
+
 import java.time.LocalDate;
 
 public class Utilisateur {
@@ -11,6 +14,16 @@ public class Utilisateur {
     private String telephone;
     private String email;
     private Role role; // Ajout du rôle
+
+    //javaFX properties
+    private IntegerProperty Id = new SimpleIntegerProperty();
+    private StringProperty Nom = new SimpleStringProperty();
+    private StringProperty Prenom = new SimpleStringProperty();
+    private StringProperty MotDePasse = new SimpleStringProperty();
+    private ObjectProperty<LocalDate> DateNaissance = new SimpleObjectProperty<>();
+    private StringProperty Telephone = new SimpleStringProperty();
+    private StringProperty Email = new SimpleStringProperty();
+    private ObjectProperty<Role> Role = new SimpleObjectProperty<>();
 
     // Constructeur par défaut
     public Utilisateur() {}
@@ -25,7 +38,53 @@ public class Utilisateur {
         this.telephone = telephone;
         this.email = email;
         this.role = role;
+
+        this.Id = new SimpleIntegerProperty(id);
+        this.Nom = new SimpleStringProperty(nom);
+        this.Prenom = new SimpleStringProperty(prenom);
+        this.MotDePasse = new SimpleStringProperty(motDePasse);
+        this.DateNaissance = new SimpleObjectProperty<>(dateNaissance);
+        this.Telephone = new SimpleStringProperty(telephone);
+        this.Email = new SimpleStringProperty(email);
+        this.Role = new SimpleObjectProperty<>(role);
+
+
     }
+    public StringProperty telephoneProperty() {
+        return Telephone;
+    }
+
+    public IntegerProperty idProperty() {
+        return Id;
+    }
+
+    public StringProperty nomProperty() {
+        return Nom;
+    }
+
+    public StringProperty prenomProperty() {
+        return Prenom;
+    }
+
+    public StringProperty motDePasseProperty() {
+        return MotDePasse;
+    }
+
+    public ObjectProperty<LocalDate> dateNaissanceProperty() {
+        return DateNaissance;
+    }
+
+    public StringProperty emailProperty() {
+        return Email;
+    }
+
+    public ObjectProperty<Role> roleProperty() {
+        return Role;
+    }
+
+
+
+
 
     // Getters et Setters
     public int getId() {

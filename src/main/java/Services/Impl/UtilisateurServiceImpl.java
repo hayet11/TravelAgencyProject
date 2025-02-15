@@ -4,12 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import Entities.Utilisateur;
+import Services.IUserServices;
 import Utils.DataSource;
-import Entities.Role;
+import enums.Role;
 
 
 
-public class UtilisateurServiceImpl {
+public class UtilisateurServiceImpl implements IUserServices {
     private Connection con = DataSource.getInstance().getConn();
     private Statement st;
 
@@ -188,7 +189,41 @@ public class UtilisateurServiceImpl {
         }
         return ajouterUtilisateur(utilisateur); // Réutilisation de la méthode ajouter()
     }
+    @Override
+    public int StatsBookingToDay() throws SQLException {
+        LocalDate today = LocalDate.now();
+        String req = "SELECT count(*) AS NB FROM `reservation` where `date`=?";
+        PreparedStatement pre = con.prepareStatement(req);
+        pre.setDate(1,Date.valueOf(today));
+        ResultSet rs = pre.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("NB");
+        }
+        return 0;}
 
+    @Override
+    public int StatsBookingGeneral() throws SQLException {
+        LocalDate today = LocalDate.now();
+        String req = "SELECT count(*) AS NB FROM `reservation`";
+        PreparedStatement pre = con.prepareStatement(req);
+        ResultSet rs = pre.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("NB");
+        }
+        return 0;    }
+
+    @Override
+    public int StatsSumStay() throws SQLException {
+        LocalDate today = LocalDate.now();
+        String req = "SELECT SUM(Tarif) AS NB FROM `sejourhotel`";
+        PreparedStatement pre = con.prepareStatement(req);
+        int SumGeneral = 0;
+        ResultSet rs = pre.executeQuery();
+        if (rs.next()) {
+            SumGeneral = rs.getInt("NB");
+        }
+        return SumGeneral+=SumGeneral*0.5;
+    }
 
 
 

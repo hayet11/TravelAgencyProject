@@ -16,16 +16,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mindrot</groupId>
-            <artifactId>jbcrypt</artifactId>
-            <version>0.4</version>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.0</version>
         </dependency>
-
-        <dependency>
-                <groupId>org.controlsfx</groupId>
-                <artifactId>controlsfx</artifactId>
-                <version>11.1.0</version>
-            </dependency>
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx</artifactId>
@@ -39,7 +33,7 @@
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx</artifactId>
-            <version>8.9</version> <!-- Ou la dernière version disponible -->
+            <version>8.9</version> <!-- Or the latest version available -->
         </dependency>
         <dependency>
             <groupId>de.jensd</groupId>
@@ -59,6 +53,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>22.2.0</version><!-- Or latest version -->
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.0.4</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
@@ -74,8 +80,29 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.craigburke.document</groupId>
+            <artifactId>pdf</artifactId>
+            <version>0.5.0</version>
+        </dependency>
     </dependencies>
+
+    <!-- Retirer la section des dépôts Stripe non nécessaire -->
+    <repositories>
+        <!-- Maven Central est déjà par défaut, donc pas besoin d'ajouter un dépôt externe ici -->
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>internal-repo</id>
+            <name>Internal Repository</name>
+            <url>file://${project.basedir}/target/repo</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -88,13 +115,13 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>org.example.travelagency/org.example.travelagency.HelloApplication</mainClass>
