@@ -1,4 +1,5 @@
 package Services.Impl;
+
 import Entities.VoyageOrganise;
 import Services.IVoyageOrganiseService;
 import Utils.DataSource;
@@ -21,6 +22,7 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
             System.out.println("Erreur lors de la création du Statement : " + e.getMessage());
         }
     }
+
     @Override
     public void ajouterReservation(VoyageOrganise voyageOrganise) throws SQLException {
 
@@ -31,29 +33,28 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
     public void ajouter(VoyageOrganise voyageOrganise) throws SQLException {
         StringBuilder pointInteret = new StringBuilder();
         StringBuilder itineraire = new StringBuilder();
-        if(voyageOrganise.getItineraires()!=null&&voyageOrganise.getItineraires().size()>0)
-            for(String iteniraire:voyageOrganise.getItineraires())
-            {
+        if (voyageOrganise.getItineraires() != null && voyageOrganise.getItineraires().size() > 0)
+            for (String iteniraire : voyageOrganise.getItineraires()) {
                 itineraire.append(iteniraire).append("/");
             }
-        if(voyageOrganise.getPointsIneret()!=null&&voyageOrganise.getPointsIneret().size()>0)
-            for(String point:voyageOrganise.getPointsIneret())
-            {
+        if (voyageOrganise.getPointsIneret() != null && voyageOrganise.getPointsIneret().size() > 0)
+            for (String point : voyageOrganise.getPointsIneret()) {
                 pointInteret.append(point).append("/");
             }
         String req = "INSERT INTO `voyageorganise` (`itineraires`, `dateDepart`, `pointsInteret`, `guideDisponible`,`description`,`Tarif`,`NBPlace`) " +
                 "VALUES ( ?, ?, ?, ?,?,?,?)";
         PreparedStatement pre = con.prepareStatement(req);
-        pre.setString(1,itineraire.toString());
+        pre.setString(1, itineraire.toString());
         if (voyageOrganise.getDateDepart() != null) {
             pre.setDate(2, new java.sql.Date(voyageOrganise.getDateDepart().getTime()));
         } else {
             pre.setDate(2, null);
-        }        pre.setString(3,pointInteret.toString());
-        pre.setBoolean(4,voyageOrganise.isGuideDisponible());
-        pre.setString(5,voyageOrganise.getDescription());
-        pre.setFloat(6,voyageOrganise.getTarif());
-        pre.setFloat(7,voyageOrganise.getNBPlacDisponible());
+        }
+        pre.setString(3, pointInteret.toString());
+        pre.setBoolean(4, voyageOrganise.isGuideDisponible());
+        pre.setString(5, voyageOrganise.getDescription());
+        pre.setFloat(6, voyageOrganise.getTarif());
+        pre.setFloat(7, voyageOrganise.getNBPlacDisponible());
         pre.executeUpdate();
         System.out.println("Voyage ajouté avec succès !");
     }
@@ -113,7 +114,7 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
         pre.setInt(1, id);
         ResultSet rs = pre.executeQuery();
         if (rs.next()) {
-            VoyageOrganise v= new VoyageOrganise();
+            VoyageOrganise v = new VoyageOrganise();
             v.setId(rs.getInt("id"));
             v.setDateDepart(rs.getDate("dateDepart"));
             v.setGuideDisponible(rs.getBoolean("guideDisponible"));
@@ -122,7 +123,7 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
             v.setDescription(rs.getString("description"));
             v.setTarif(rs.getFloat("Tarif"));
             v.setNBPlacDisponible(rs.getInt("NBPlace"));
-            return  v;
+            return v;
         }
         return null;
     }
@@ -132,7 +133,7 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
         List<VoyageOrganise> vols = new ArrayList<>();
         ResultSet rs = st.executeQuery("SELECT * FROM `voyageorganise` where `NBPlace`>0 ");
         while (rs.next()) {
-            VoyageOrganise v= new VoyageOrganise();
+            VoyageOrganise v = new VoyageOrganise();
             v.setId(rs.getInt("id"));
             v.setDateDepart(rs.getDate("dateDepart"));
             v.setGuideDisponible(rs.getBoolean("guideDisponible"));
@@ -143,17 +144,16 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
             v.setNBPlacDisponible(rs.getInt("NBPlace"));
             vols.add(v);
         }
-        return vols;    }
+        return vols;
+    }
 
     @Override
     public List<VoyageOrganise> getByDate(LocalDate date) throws SQLException {
         System.out.println(date);
         List<VoyageOrganise> voyages = new ArrayList<>();
-        if(date==null)
-        {
+        if (date == null) {
             return getAll();
-        }
-        else {
+        } else {
             String req = "SELECT * FROM `voyageorganise` WHERE `dateDepart` = ?";
             PreparedStatement pre = con.prepareStatement(req);
             pre.setDate(1, Date.valueOf(date));
@@ -217,7 +217,8 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
             throw new SQLException("Erreur lors de la récupération du nombre de voyages organisés", e);
         }
 
-        return nbTrips;    }
+        return nbTrips;
+    }
 
     @Override
     public float SumOrganisedTrip() throws SQLException {
@@ -235,6 +236,55 @@ public class VoyageOrganiseImpl implements IVoyageOrganiseService {
             throw new SQLException("Erreur lors de la récupération du nombre de voyages organisés", e);
         }
 
-        return sum+=sum*0.5;    }
+        return sum += sum * 0.5;
+    }
+
+
+    public int ajouterEtRecupererId(VoyageOrganise voyageOrganise) throws SQLException {
+        StringBuilder pointInteret = new StringBuilder();
+        StringBuilder itineraire = new StringBuilder();
+
+        if (voyageOrganise.getItineraires() != null && !voyageOrganise.getItineraires().isEmpty()) {
+            for (String itineraireStr : voyageOrganise.getItineraires()) {
+                itineraire.append(itineraireStr).append("/");
+            }
+        }
+        if (voyageOrganise.getPointsIneret() != null && !voyageOrganise.getPointsIneret().isEmpty()) {
+            for (String point : voyageOrganise.getPointsIneret()) {
+                pointInteret.append(point).append("/");
+            }
+        }
+
+        String req = "INSERT INTO `voyageorganise` (`itineraires`, `dateDepart`, `pointsInteret`, `guideDisponible`, `description`, `Tarif`, `NBPlace`) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        // Demande à JDBC de retourner les clés générées
+        PreparedStatement pre = con.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+
+        pre.setString(1, itineraire.toString());
+        if (voyageOrganise.getDateDepart() != null) {
+            pre.setDate(2, new java.sql.Date(voyageOrganise.getDateDepart().getTime()));
+        } else {
+            pre.setDate(2, null);
+        }
+        pre.setString(3, pointInteret.toString());
+        pre.setBoolean(4, voyageOrganise.isGuideDisponible());
+        pre.setString(5, voyageOrganise.getDescription());
+        pre.setFloat(6, voyageOrganise.getTarif());
+        pre.setFloat(7, voyageOrganise.getNBPlacDisponible());
+
+        pre.executeUpdate();
+
+        // Récupère l'ID généré
+        ResultSet rs = pre.getGeneratedKeys();
+        int id = -1;
+        if (rs.next()) {
+            id = rs.getInt(1);
+        }
+
+        System.out.println("Voyage ajouté avec succès, ID : " + id);
+        return id;
+    }
+
 
 }

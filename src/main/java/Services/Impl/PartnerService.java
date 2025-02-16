@@ -164,7 +164,6 @@ public class PartnerService implements IPartnerService {
         stmt.setInt(2, partnerId);
         stmt.setString(3, offreType);
         stmt.executeUpdate();
-
     }
 
 
@@ -175,5 +174,5 @@ public class PartnerService implements IPartnerService {
         pst.setInt(2, partnerId);
         pst.executeUpdate();
     }
-    
+
 }
