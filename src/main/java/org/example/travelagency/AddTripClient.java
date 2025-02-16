@@ -14,6 +14,7 @@ import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
 import enums.ModePaiement;
+import enums.TypeOffre;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -91,6 +92,7 @@ public class AddTripClient {
             return;
         }
 
+
         // Mise à jour du nombre de places disponibles
         voyage.setNBPlacDisponible(voyage.getNBPlacDisponible() - placesReservees);
         VoyageOrganiseImpl voyageOrganiseImpl = new VoyageOrganiseImpl();
@@ -103,24 +105,23 @@ public class AddTripClient {
             return;
         }
 
-//        // Récupération de la valeur du mode de paiement
-//        ModePaiement modePaiement = ModePaiement.valueOf(modePaiementComboBox.getValue());
-//
-//        // Création de la réservation
-//        Reservation reservation = new Reservation(
-//                Date.valueOf(dateArriveePicker.getValue()),
-//                participantsSpinner.getValue(),
-//                modePaiement,
-//                "HAMDIMH", // Utilisation du login
-//                voyage.getId(),
-//                enums.TypeOffre.VOYAGE_ORGANISE
-//        );
+
+       // Création de la réservation
+        Reservation reservation = new Reservation(
+                voyage.getId(),
+                voyage.getDateDepart(),
+               Integer.parseInt(numPlacesField.getText()),
+                "Sur place",
+                1, // Utilisation du login
+                voyage.getId(),
+                TypeOffre.VoyageOrganise
+        );
 
         // Ajout de la réservation en base de données
-//        ReservationServiceImpl implementation = new ReservationServiceImpl();
-//        try {
-////            implementation.ajouter(reservation);
-//
+        ReservationServiceImpl implementation = new ReservationServiceImpl();
+        try {
+            implementation.ajouter(reservation);
+
 //            // Chargement de la nouvelle scène
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingList.fxml"));
 //            Scene scene = new Scene(loader.load());
@@ -128,11 +129,11 @@ public class AddTripClient {
 //            stage.setScene(scene);
 //            stage.setTitle("Liste des Voyages");
 //            stage.show();
-//        } catch (SQLException | IOException e) {
-//            e.printStackTrace();
-//            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de sauvegarder la réservation.");
-//            return;
-//        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de sauvegarder la réservation.");
+            return;
+        }
 
         // Génération du PDF
         generatePDF(voyage, placesReservees);

@@ -11,9 +11,7 @@
     <children>
         <!-- Sidebar -->
         <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;">
-            <children>
-                <Label layoutX="28.0" layoutY="192.0" text="Historique des reservations" textFill="WHITE" />
-            </children></AnchorPane>
+         </AnchorPane>
 
         <!-- Table for Bookings -->
         <TableView fx:id="tableView" editable="true" layoutX="220.0" layoutY="93.0" prefHeight="307.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px; -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="93.0">
