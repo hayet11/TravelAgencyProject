@@ -1,8 +1,7 @@
 package org.example.travelagency;
-
-import Entities.Role;
 import Entities.Utilisateur;
 import Services.Impl.UtilisateurServiceImpl;
+import enums.Role;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

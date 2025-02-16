@@ -62,10 +62,10 @@ public class SignInController {
                 fxmlFile = "AgentInterface.fxml";  // Remplace par le fichier FXML de l'interface Agent
                 break;
             case CLIENT:
-                fxmlFile = "L istFlight.fxml";  // Remplace par le fichier FXML de l'interface Client
+                fxmlFile = "ListFlight.fxml";  // Remplace par le fichier FXML de l'interface Client
                 break;
             case SUPPORT_TECH:
-                fxmlFile = "SupportTechInterface.fxml";  // Remplace par le fichier FXML de l'interface Support Technique
+                fxmlFile = "listeAgents.fxml";  // Remplace par le fichier FXML de l'interface Support Technique
                 break;
             default:
                 System.out.println("Aucun rôle défini !");

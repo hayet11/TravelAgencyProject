@@ -225,7 +225,18 @@ public class UtilisateurServiceImpl implements IUserServices {
         return SumGeneral+=SumGeneral*0.5;
     }
 
+    public void sendEmailToAgent(Utilisateur agent) {
+        EmailService emailService = new EmailService();
 
+        String subject = "Vos informations de connexion à l'application Travel Tour";
+        String messageBody = "Bonjour " + agent.getNom() + " " + agent.getPrenom() + ",\n\n" +
+                "Voici vos informations de connexion :\n" +
+                "Login : " + agent.getEmail() + "\n" +
+                "Mot de passe : " + agent.getMotDePasse() + "\n\n" +
+                "Cordialement,\nL'équipe support Travel Tour";
+
+        emailService.sendEmail(agent.getEmail(), subject, messageBody);
+    }
 
 
 }
