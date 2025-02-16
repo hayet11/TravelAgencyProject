@@ -1,4 +1,5 @@
 package org.example.travelagency;
+
 import Entities.Utilisateur;
 import Services.Impl.UtilisateurServiceImpl;
 import javafx.fxml.FXML;
@@ -47,6 +48,7 @@ public class SignInController {
         }
 
     }
+
     private void showAlert(String titre, String message, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle(titre);
@@ -54,12 +56,13 @@ public class SignInController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void redirigerUtilisateur(Utilisateur utilisateur) {
-        String fxmlFile = ""; 
+        String fxmlFile = "";
 
         switch (utilisateur.getRole()) {
             case AGENT:
-                fxmlFile = "AgentInterface.fxml";  // Remplace par le fichier FXML de l'interface Agent
+                fxmlFile = "WelcomePage.fxml";  // Remplace par le fichier FXML de l'interface Agent
                 break;
             case CLIENT:
                 fxmlFile = "ListFlight.fxml";  // Remplace par le fichier FXML de l'interface Client
@@ -103,6 +106,7 @@ public class SignInController {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void handleCreateNewAccount(ActionEvent event) {
         try {
@@ -119,7 +123,6 @@ public class SignInController {
             e.printStackTrace();
         }
     }
-
 
 
 }
