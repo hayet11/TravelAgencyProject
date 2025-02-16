@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="org.example.travelagency.GererPartenairesController">
+
+    <children>
+        <VBox>
+            <MenuBar layoutX="0" layoutY="0" prefWidth="744.0">
+                <menus>
+                    <Menu text="Vols">
+                        <MenuItem text="Liste des vols" onAction="#changerVue" userData="ListFlight.fxml"/>
+                        <MenuItem text="Ajouter un vol" onAction="#changerVue" userData="AddFlight.fxml"/>
+                    </Menu>
+                    <Menu text="Voyages">
+                        <MenuItem text="Tous les voyages" onAction="#changerVue" userData="ListVoyage.fxml"/>
+                        <MenuItem text="Nouveau voyage" onAction="#changerVue" userData="AddTripForm.fxml"/>
+                    </Menu>
+                    <Menu text="Séjours">
+                        <MenuItem text="Hôtels"/>
+                        <MenuItem text="Activités"/>
+                    </Menu>
+                    <Menu text="Partenaires">
+                        <MenuItem text="Gérer les partenaires" disable="true"/>
+                    </Menu>
+                    <Menu text="Aide">
+                        <MenuItem text="Consulter la rubrique d'aide" onAction="#changerVue" userData="AideUser.fxml"/>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <AnchorPane fx:id="rootPane" prefWidth="400.0" prefHeight="700.0"/>
+        </VBox>
+
+        <AnchorPane layoutY="25.0" prefWidth="200.0" prefHeight="775.0" style="-fx-background-color: #023047;">
+            <children>
+                <Hyperlink layoutX="10.0" layoutY="750.0" text="Déconnexion" onAction="#changerVue"
+                           userData="Login.fxml"
+                           style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            </children>
+        </AnchorPane>
+
+        <!-- Contenu principal -->
+        <AnchorPane layoutX="200.0" layoutY="25.0" prefHeight="775.0" prefWidth="1080.0"
+                    style="-fx-background-color: #f8f9fa;">
+            <children>
+                <Label layoutX="20.0" layoutY="20.0" text="Gestion des Partenaires"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #023047;"/>
+
+                <TableView fx:id="tablePartenaires" layoutX="20.0" layoutY="60.0" prefHeight="300.0" prefWidth="1040.0">
+                    <columns>
+                        <TableColumn fx:id="colNom" text="Nom" prefWidth="173"/>
+                        <TableColumn fx:id="colCategory" text="Catégorie" prefWidth="173"/>
+                        <TableColumn fx:id="colType" text="Type" prefWidth="173"/>
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="173"/>
+                        <TableColumn fx:id="colTelephone" text="Téléphone" prefWidth="173"/>
+                        <TableColumn fx:id="colAdresse" text="Adresse" prefWidth="174"/>
+                    </columns>
+                </TableView>
+
+                <VBox layoutX="20.0" layoutY="380.0" spacing="10.0">
+                    <children>
+                        <TextField fx:id="txtNom" promptText="Nom du Partenaire" prefWidth="1040.0"/>
+                        <ComboBox fx:id="cmbCategory" promptText="Catégorie de Partenaire" prefWidth="1040.0"/>
+                        <ComboBox fx:id="cmbType" promptText="Type de Partenaire" prefWidth="1040.0"/>
+                        <TextField fx:id="txtEmail" promptText="Email" prefWidth="1040.0"/>
+                        <TextField fx:id="txtTelephone" promptText="Téléphone" prefWidth="1040.0"/>
+                        <TextField fx:id="txtAdresse" promptText="Adresse" prefWidth="1040.0"/>
+                    </children>
+                </VBox>
+
+                <HBox layoutX="20.0" layoutY="730.0" spacing="20.0">
+                    <children>
+                        <Button fx:id="btnAjouter" text="Ajouter" onAction="#ajouterPartenaire"
+                                style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                        <Button fx:id="btnModifier" text="Modifier" onAction="#modifierPartenaire"
+                                style="-fx-background-color: #8ECAE6; -fx-text-fill: #023047; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                        <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerPartenaire"
+                                style="-fx-background-color: #FF0000; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                        <Button fx:id="btnHistorique" text="Voir Historique" onAction="#afficherHistorique"
+                                style="-fx-background-color: #FFB703; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

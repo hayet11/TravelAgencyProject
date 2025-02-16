@@ -30,7 +30,7 @@
                     <MenuItem text="Activités"/>
                 </Menu>
                 <Menu text="Partenaires">
-                    <MenuItem text="Gérer les partenaires" onAction="#GoPartenaires"/>
+                    <MenuItem text="Gérer les partenaires" onAction="#changerVue" userData="GererPartenaires.fxml"/>
                 </Menu>
                 <Menu text="Aide">
                     <MenuItem text="Consulter la rubrique d'aide" onAction="#changerVue" userData="AideUser.fxml"/>
