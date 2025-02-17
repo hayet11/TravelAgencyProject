@@ -12,6 +12,7 @@ public class Reservation {
     private int clientId;
     private int offreId;
     private TypeOffre typeOffre;
+    private int NbrNuitee;
 
 
 
@@ -102,5 +103,13 @@ public class Reservation {
 
     public void setTypeOffre(TypeOffre typeOffre) {
         this.typeOffre = typeOffre;
+    }
+
+    public int getNbrNuitee() {
+        return NbrNuitee;
+    }
+
+    public void setNbrNuitee(int nbrNuitee) {
+        NbrNuitee = nbrNuitee;
     }
 }
