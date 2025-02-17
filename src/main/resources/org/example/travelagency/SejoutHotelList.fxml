@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.SejourHotelListController">
+    <children>
+        <!-- Bloc des critères de recherche -->
+        <Label layoutX="20.0" layoutY="20.0" text="Critères de recherche" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #023047;" />
+        <Button fx:id="ajouterButton" layoutX="650.0" layoutY="20.0" text="Ajouter"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;"
+        />
+
+
+        <Label layoutX="20.0" layoutY="60.0" text="Nom de l'Hôtel :" style="-fx-text-fill: #023047;" />
+        <TextField fx:id="nomHotelField" layoutX="150.0" layoutY="55.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-border-radius: 5px;" />
+
+        <Label layoutX="20.0" layoutY="95.0" text="Adresse :" style="-fx-text-fill: #023047;" />
+        <TextField fx:id="AdresseField" layoutX="150.0" layoutY="95.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-border-radius: 5px;" />
+
+        <Label layoutX="20.0" layoutY="140.0" text="Tarif Maximum (€) :" style="-fx-text-fill: #023047;" />
+        <TextField fx:id="tarifMaxField" layoutX="150.0" layoutY="135.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-border-radius: 5px;" />
+
+        <Button fx:id="searchButton" layoutX="370.0" layoutY="95.0" text="Rechercher" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" />
+
+        <!-- Bloc des résultats -->
+        <TableView fx:id="tableView" layoutX="20.0" layoutY="200.0" prefHeight="280.0" prefWidth="760.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px;">
+            <columns>
+                <TableColumn fx:id="nomHotelCol" prefWidth="150.0" text="Nom de l'Hôtel" />
+                <TableColumn fx:id="nbrEtoilesCol" prefWidth="100.0" text="Étoiles" />
+                <TableColumn fx:id="tarifParNuitCol" prefWidth="150.0" text="Tarif par Nuit (€)" />
+                <TableColumn fx:id="adresseCol" prefWidth="200.0" text="Adresse" />
+                <TableColumn fx:id="actionCol" prefWidth="150.0" text="Actions" />
+            </columns>
+        </TableView>
+
+    </children>
+</AnchorPane>

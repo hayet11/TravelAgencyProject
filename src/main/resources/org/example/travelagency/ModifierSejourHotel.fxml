@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns:fx="http://javafx.com/javafx" xmlns="http://javafx.com/javafx/8"
+           fx:controller="org.example.travelagency.ModifierSejourHotelController"
+           style="-fx-background-color: #f4f4f4;">
+    <children>
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 20;">
+            <!-- Titre -->
+            <Label text="Modifier les Détails du Séjour Hôtel"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+            <!-- Nom de l'hôtel -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Nom de l'Hôtel :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="nomHotelField" style="-fx-font-size: 14px; -fx-pref-width: 200px;" />
+            </HBox>
+
+            <!-- Nombre de chambres disponibles -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Nombre de Chambres Disponibles :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="nbrChambresDispoField" style="-fx-font-size: 14px; -fx-pref-width: 100px;" />
+            </HBox>
+
+            <!-- Adresse -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Adresse :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="adresseField" style="-fx-font-size: 14px; -fx-pref-width: 300px;" />
+            </HBox>
+
+            <!-- Nombre d'étoiles -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Nombre d'Étoiles :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <Spinner fx:id="nbrEtoilesSpinner" style="-fx-pref-width: 80px;">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="5" initialValue="1" />
+                    </valueFactory>
+                </Spinner>
+            </HBox>
+
+            <!-- Tarif par nuit -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Tarif par Nuit :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="tarifParNuitField" style="-fx-font-size: 14px; -fx-pref-width: 100px;" />
+            </HBox>
+
+            <!-- Description -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Description :" style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <TextField fx:id="descriptionField" style="-fx-font-size: 14px; -fx-pref-width: 300px;" />
+            </HBox>
+
+            <!-- Boutons d'actions -->
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                <Button fx:id="backButton" text="Annuler"
+                        style="-fx-background-color: #cccccc; -fx-text-fill: #333; -fx-border-radius: 5px; -fx-padding: 5 15;" />
+                <Button fx:id="saveButton" text="Enregistrer"
+                        style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-border-radius: 5px; -fx-padding: 5 15;" />
+            </HBox>
+        </VBox>
+    </children>
+</StackPane>
