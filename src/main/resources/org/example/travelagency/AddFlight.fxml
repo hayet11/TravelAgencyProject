@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.travelagency.AddFlightController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="677.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.AddFlightController">
+    <children>
+        <!-- Partie bleue sur la gauche -->
+        <AnchorPane prefHeight="677.0" prefWidth="200.0" style="-fx-background-color: #023047;" />
 
+        <!-- Formulaire à droite -->
+        <VBox layoutX="220.0" layoutY="20.0" prefHeight="613.0" prefWidth="660.0" spacing="15">
+            <!-- Title Label -->
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Ajouter un Vol" textFill="#023047">
+                <font>
+                    <Font size="15.0" />
+                </font></Label>
+
+            <!-- Date d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Date d'arrivée :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <DatePicker fx:id="dateArriveePicker" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Compagnie -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Compagnie :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="compagnieField" promptText="Entrez la compagnie" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Aéroport de départ -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Aéroport de départ :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="aeroportDepartField" promptText="Entrez l'aéroport de départ" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Aéroport d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Aéroport d'arrivée :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="aeroportArriveeField" promptText="Entrez l'aéroport d'arrivée" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Heure de départ -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Heure de départ :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="heureDepartField" promptText="HH:MM" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Heure d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Heure d'arrivée :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="heureArriveeField" promptText="HH:MM" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Type -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Type Vol: " textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <Label text="Aller" textFill="#023047" />
+                <CheckBox fx:id="allerCheckBox" />
+                <Label text="Retour" textFill="#023047" />
+                <CheckBox fx:id="retourCheckBox" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Tarif -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Tarif :" textFill="#023047">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TextField fx:id="tariffField" promptText="Entrez le tarif" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Description -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <TextArea fx:id="descriptionField" prefHeight="50.0" prefWidth="339.0" promptText="Entrez la description" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
+
+            <!-- Buttons -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button onAction="#onSave" style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-size: 14px;" text="Enregistrer" />
+                <Button fx:id="delete" onAction="#onCancel" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-size: 14px;" text="Annuler" />
+            </HBox>
+        </VBox>
+    </children>
 </AnchorPane>

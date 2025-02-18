@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.ListFlightController">
@@ -12,7 +13,7 @@
         <AnchorPane prefHeight="401.0" prefWidth="200.0" style="-fx-background-color: #023047; -fx-border-radius: 15px; -fx-padding: 15px;" />
 
         <!-- Table for Flights -->
-        <TableView fx:id="tableView" layoutX="220.0" layoutY="93.0" prefHeight="307.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px; -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="93.0" editable="true">
+        <TableView fx:id="tableView" editable="true" layoutX="220.0" layoutY="93.0" prefHeight="307.0" style="-fx-background-color: #f9f9f9; -fx-border-radius: 15px; -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2);" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="93.0">
             <columns>
                 <TableColumn fx:id="colDescription" prefWidth="120.0" text="Description" />
                 <TableColumn fx:id="colTarif" prefWidth="75.0" text="Tarif" />
@@ -22,17 +23,16 @@
                 <TableColumn fx:id="colArrivee" prefWidth="100.0" text="Aéroport Arrivée" />
                 <TableColumn fx:id="colHeureDepart" prefWidth="120.0" text="Heure Départ" />
                 <TableColumn fx:id="colHeureArrivee" prefWidth="120.0" text="Heure Arrivée" />
-                <TableColumn fx:id="colAction" prefWidth="160.0" text="Actions"/>
+                <TableColumn fx:id="colAction" prefWidth="160.0" text="Actions" />
             </columns>
         </TableView>
 
-        <!-- Date Picker -->
-        <DatePicker fx:id="datePicker" layoutX="370.0" layoutY="22.0" style="-fx-font-size: 14px; -fx-background-color: #ffffff; -fx-border-radius: 5px; -fx-text-fill: #023047;" />
-
-        <!-- Label for Date Picker -->
-        <Label layoutX="210.0" layoutY="26.0" style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;" text="Rechercher par date" />
+        <Label layoutX="210.0" layoutY="26.0" style="-fx-font-size: 16px; -fx-text-fill: #023047; -fx-font-weight: bold;" text="Rechercher par l'aéroport d'Arrivée :" />
+        <TextField fx:id="idarptdp" layoutX="509.0" layoutY="27.0" prefHeight="25.0" prefWidth="172.0" />
 
         <!-- Search Button -->
-        <Button fx:id="searchButton" layoutX="590.0" layoutY="22.0"  style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rechercher" />
+        <Button fx:id="searchButton" layoutX="730.0" layoutY="25.0" onAction="#search" style="-fx-background-color: #0288d1; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rechercher" />
+        <!-- Refresh Button -->
+        <Button fx:id="refreshButton" layoutX="1060.0" layoutY="25.0" onAction="#Refresh" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px;" text="Rafraîchir" />
     </children>
 </AnchorPane>

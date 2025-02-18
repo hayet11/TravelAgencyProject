@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Vol extends Offre{
+
     private TypeVol type;
     private String compagnieDepart;
     private String aeroportDepart;
@@ -13,6 +14,7 @@ public class Vol extends Offre{
     private Date heureDepart;
     private Date heureArrivee;
     private Date dateArrivee;
+
     public Vol(){
     }
 

@@ -1,147 +1,112 @@
 package org.example.travelagency;
 
-import Entities.VoyageOrganise;
-import Services.Impl.VoyageOrganiseImpl;
+import Entities.Vol;
+import Services.Impl.VolServicesImpl;
+import enums.TypeVol;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.controlsfx.control.CheckComboBox;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.io.IOException;
+import java.sql.Date;
 
 public class UpdateFlightController {
 
-    @FXML private DatePicker dateDepartPicker;
+    private TypeVol typeVol;
+    private Vol vol;
+    private float tarif;
+    private Vol volActuel;
     @FXML
-    private CheckComboBox<String> itineraryComboBox;
+    private Button delete;
     @FXML
-    private CheckComboBox<String> pointsOfInterestComboBox;
-    @FXML private CheckBox guideCheckBox;
-    @FXML private TextField tariffField;
-    @FXML private TextArea descriptionField;
+    private DatePicker dateArriveePicker;
+    @FXML
+    private TextField compagnieField;
+    @FXML
+    private TextField aeroportDepartField;
+    @FXML
+    private TextField aeroportArriveeField;
+    @FXML
+    private TextField heureDepartField;
+    @FXML
+    private TextField heureArriveeField;
+    @FXML
+    private TextArea descriptionField;
+    @FXML
+    private CheckBox allerCheckBox;
+    @FXML
+    private CheckBox retourCheckBox;
+    @FXML
+    private CheckBox allerRetourCheckBox;
+    @FXML
+    private TextField tariffField;
 
-    private VoyageOrganise voyage;
-
-    public void setVoyage(VoyageOrganise voyage)  {
-        this.voyage = voyage;
-        Date dateDepart = voyage.getDateDepart();
-        LocalDate localDate = LocalDate.parse(dateDepart.toString());
-        dateDepartPicker.setValue(localDate);
-        if(voyage.getItineraires().size()>0)
-        {
-        for (String itineraire : voyage.getItineraires()) {
-                itineraryComboBox.getCheckModel().check(itineraire);
-
-        }   }     if(voyage.getPointsIneret().size()>0)
-            for (String point : voyage.getPointsIneret()) {
-                pointsOfInterestComboBox.getCheckModel().check(point);
-
-            }        guideCheckBox.setSelected(voyage.isGuideDisponible());
-        tariffField.setText(String.valueOf(voyage.getTarif()));
-        descriptionField.setText(voyage.getDescription());
+    public void initData(Vol vol) {
+        this.volActuel = vol;
+        descriptionField.setText(vol.getDescription());
+        tariffField.setText(String.valueOf(vol.getTarif()));
+        compagnieField.setText(vol.getCompagnie());
+        aeroportDepartField.setText(vol.getAeroportDepart());
+        aeroportArriveeField.setText(vol.getAeroportArrivee());
+        heureDepartField.setText(vol.getHeureDepart().toString());
+        heureArriveeField.setText(vol.getHeureArrivee().toString());
+        TypeVol typeVol = vol.getType();
+        if (typeVol != null) {
+            switch (typeVol) {
+                case aller:
+                    allerCheckBox.setSelected(true);
+                    break;
+                case retour:
+                    retourCheckBox.setSelected(true);
+                    break;
+                case aller_retour:
+                    allerRetourCheckBox.setSelected(true);
+                    break;
+            }
+        }
+        if (vol.getDateArrivee() != null) {
+            Date dateArrivee = (Date) vol.getDateArrivee();
+            System.out.println(dateArrivee);
+            LocalDate localDate = dateArrivee.toLocalDate(); // Conversion de java.sql.Date en LocalDate
+            dateArriveePicker.setValue(localDate);
+        }
     }
 
     @FXML
-    private void onSave() throws SQLException {
-
-        int test=0;
-        List<String> selectedItineraries = new ArrayList<>();
-        if (itineraryComboBox.getCheckModel().getCheckedItems().size() > 0) {
-            for (String itinerary : itineraryComboBox.getCheckModel().getCheckedItems()) {
-                selectedItineraries.add(itinerary);
+    private void save() throws SQLException {
+        try {
+            volActuel.setDescription(descriptionField.getText());
+            volActuel.setTarif(Float.parseFloat(tariffField.getText()));
+            volActuel.setCompagnie(compagnieField.getText());
+            volActuel.setAeroportDepart(aeroportDepartField.getText());
+            volActuel.setAeroportArrivee(aeroportArriveeField.getText());
+            volActuel.setHeureDepart(java.sql.Time.valueOf(heureDepartField.getText()));
+            volActuel.setHeureArrivee(java.sql.Time.valueOf(heureArriveeField.getText()));
+            if (allerCheckBox.isSelected()) {
+                volActuel.setType(TypeVol.aller);
+            } else if (retourCheckBox.isSelected()) {
+                volActuel.setType(TypeVol.retour);
+            } else {
+                volActuel.setType(TypeVol.aller_retour);
             }
-            if (selectedItineraries.equals(voyage.getItineraires())) {
-                test++;
-
+            if (dateArriveePicker.getValue() != null) {
+                volActuel.setDateArrivee(Date.valueOf(dateArriveePicker.getValue()));
             }
-        } else {
-            voyage.setItineraires(selectedItineraries);
+            VolServicesImpl srv = new VolServicesImpl();
+            srv.update(volActuel);
+            Stage stage = (Stage) dateArriveePicker.getScene().getWindow();
+            stage.close();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la mise à jour !");
+            e.printStackTrace();
         }
-        List<String> selectedPointsOfInterest = new ArrayList<>();
-        if (pointsOfInterestComboBox.getCheckModel().getCheckedItems().size() > 0) {
-            for (String pointOfInterest : pointsOfInterestComboBox.getCheckModel().getCheckedItems()) {
-                selectedPointsOfInterest.add(pointOfInterest);
-            }
-            if (!selectedPointsOfInterest.equals(voyage.getPointsIneret())) {
-                test++;
-
-            }
-        } else {
-            voyage.setPointsIneret(selectedPointsOfInterest);
-        }
-
-        boolean isGuideSelected = guideCheckBox.isSelected();
-        String tarif = tariffField.getText();
-        if(descriptionField.getText()!=null && !descriptionField.getText().isEmpty())
-            voyage.setDescription(descriptionField.getText());
-        else if ( descriptionField.getText().equals(voyage.getDescription()) ){
-            test++;
-        }
-        if(voyage.isGuideDisponible()==isGuideSelected)
-            test++;
-        else
-        voyage.setGuideDisponible(isGuideSelected);
-        if(Float.parseFloat(tarif)==voyage.getTarif())
-            test++;
-        else if ( tarif!=null && tarif!=""){
-            voyage.setTarif(Float.parseFloat(tarif));
-
-        }
-
-        if (dateDepartPicker.getValue() != null) {
-            voyage.setDateDepart(java.sql.Date.valueOf(dateDepartPicker.getValue()));
-        } if ( dateDepartPicker.getValue().toString().equals(voyage.getDateDepart().toString()) ){
-            test++;
-        }
-        else
-        System.out.println(test);
-        System.out.println(voyage);
-        System.out.println(!selectedItineraries.equals(voyage.getItineraires()));
-        System.out.println(!selectedPointsOfInterest.equals(voyage.getPointsIneret()));
-        System.out.println(dateDepartPicker.getValue());
-        System.out.println(voyage.getDateDepart());
-        if(test==6)
-        {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("aucune informaion a ete modifié!");
-            alert.showAndWait();
-        }
-        else
-        {
-VoyageOrganiseImpl v=new VoyageOrganiseImpl();
-         v.update(voyage);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("Les informations du voyage ont été enregistrées avec succès !");
-        alert.showAndWait();
-    }}
-
-
-    @FXML
-    private void onCancel() {
-        closeWindow();
     }
 
-    private void closeWindow() {
-        Stage stage = (Stage) dateDepartPicker.getScene().getWindow();
+    @FXML
+    private void cancel() throws IOException {
+        Stage stage = (Stage) dateArriveePicker.getScene().getWindow();
         stage.close();
     }
 
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur");
-        alert.setHeaderText("Action échouée");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

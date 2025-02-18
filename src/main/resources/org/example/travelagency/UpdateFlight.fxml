@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -8,84 +9,93 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.CheckComboBox?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="744.0" prefWidth="450.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.AddFlightController">
-    <VBox alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="700.0" prefWidth="400.0" spacing="15">
-        <!-- Title Label -->
-        <Label text="Modifier Voyage Organisé" textFill="#023047" />
+<AnchorPane prefHeight="677.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.UpdateFlightController">
+    <children>
+        <!-- Partie bleue sur la gauche -->
+        <AnchorPane prefHeight="677.0" prefWidth="200.0" style="-fx-background-color: #023047;" />
 
-        <!-- Date de départ -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Date de départ :" textFill="#023047" />
-            <DatePicker fx:id="dateDepartPicker" />
-        </HBox>
+        <!-- Formulaire à droite -->
+        <VBox layoutX="220.0" layoutY="20.0" prefHeight="613.0" prefWidth="660.0" spacing="15">
+            <!-- Title Label -->
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Mettre à Jour le Vol" textFill="#023047">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </Label>
 
-        <!-- Date d'arrivée -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Date d'arrivée :" textFill="#023047" />
-            <DatePicker fx:id="dateArriveePicker" />
-        </HBox>
+            <!-- Date d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Date d'arrivée :" textFill="#023047" />
+                <DatePicker fx:id="dateArriveePicker" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Compagnie -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Compagnie :" textFill="#023047" />
-            <TextField fx:id="compagnieField" promptText="Entrez la compagnie" />
-        </HBox>
+            <!-- Compagnie -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Compagnie :" textFill="#023047" />
+                <TextField fx:id="compagnieField" promptText="Entrez la compagnie" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Aéroport de départ -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Aéroport de départ :" textFill="#023047" />
-            <TextField fx:id="aeroportDepartField" promptText="Entrez l'aéroport de départ" />
-        </HBox>
+            <!-- Aéroport de départ -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Aéroport de départ :" textFill="#023047" />
+                <TextField fx:id="aeroportDepartField" promptText="Entrez l'aéroport de départ" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Aéroport d'arrivée -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Aéroport d'arrivée :" textFill="#023047" />
-            <TextField fx:id="aeroportArriveeField" promptText="Entrez l'aéroport d'arrivée" />
-        </HBox>
+            <!-- Aéroport d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Aéroport d'arrivée :" textFill="#023047" />
+                <TextField fx:id="aeroportArriveeField" promptText="Entrez l'aéroport d'arrivée" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Heure de départ -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Heure de départ :" textFill="#023047" />
-            <TextField fx:id="heureDepartField" promptText="HH:MM" />
-        </HBox>
+            <!-- Heure de départ -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Heure de départ :" textFill="#023047" />
+                <TextField fx:id="heureDepartField" promptText="HH:MM" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Heure d'arrivée -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Heure d'arrivée :" textFill="#023047" />
-            <TextField fx:id="heureArriveeField" promptText="HH:MM" />
-        </HBox>
+            <!-- Heure d'arrivée -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Heure d'arrivée :" textFill="#023047" />
+                <TextField fx:id="heureArriveeField" promptText="HH:MM" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Itinéraires (Dropdown List avec CheckBox) -->
-        <Label text="Itinéraires :" textFill="#023047" />
-        <CheckComboBox fx:id="itineraryComboBox" />
+            <!-- Type de vol -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Type Vol: " textFill="#023047" />
+                <Label text="Aller" textFill="#023047" />
+                <CheckBox fx:id="allerCheckBox" />
+                <Label text="Retour" textFill="#023047" />
+                <CheckBox fx:id="retourCheckBox" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Points d'intérêt (Dropdown List avec CheckBox) -->
-        <Label text="Points d'intérêt :" textFill="#023047" />
-        <CheckComboBox fx:id="pointsOfInterestComboBox" />
+            <!-- Tarif -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Tarif :" textFill="#023047" />
+                <TextField fx:id="tariffField" promptText="Entrez le tarif" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Guide -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Avec guide :" textFill="#023047" />
-            <CheckBox fx:id="guideCheckBox" />
-        </HBox>
+            <!-- Description (Réduction de l'espace) -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Description :" textFill="#023047" />
+                <TextArea fx:id="descriptionField" prefHeight="50.0" prefWidth="300.0" promptText="Entrez la description" />
+                <Label text="* obligatoire" textFill="red" />
+            </HBox>
 
-        <!-- Tarif -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Tarif :" textFill="#023047" />
-            <TextField fx:id="tariffField" promptText="Entrez le tarif" />
-        </HBox>
-
-        <!-- Description -->
-        <Label text="Description :" textFill="#023047" />
-        <TextArea fx:id="descriptionField" promptText="Entrez la description" />
-
-        <!-- Buttons -->
-        <HBox alignment="CENTER" spacing="20">
-            <Button onAction="#onSave" style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-size: 14px;" text="Enregistrer" />
-            <Button onAction="#onCancel" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-size: 14px;" text="Annuler" />
-        </HBox>
-    </VBox>
+            <!-- Buttons -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button onAction="#save" style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-size: 14px;" text="Enregistrer" />
+                <Button fx:id="delete" onAction="#cancel" style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-size: 14px;" text="Annuler" />
+            </HBox>
+        </VBox>
+    </children>
 </AnchorPane>
