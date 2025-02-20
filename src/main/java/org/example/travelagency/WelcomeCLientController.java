@@ -49,13 +49,17 @@ public class WelcomeCLientController {
 
     private UtilisateurServiceImpl UtilisateurService;
 
-    public void initialize(int IDCLient) {
-        UtilisateurService = new UtilisateurServiceImpl();
-        System.out.println("ID dans login  "+IDCLient);
+    private int IDClient;
 
-        LoadData(IDCLient);
+    public void initialize() {
+        UtilisateurService = new UtilisateurServiceImpl();
+
     }
-    public void LoadData(int IDClient){
+    public void setClientID(int IDClient){
+        this.IDClient =IDClient ;
+        LoadData();
+    }
+    public void LoadData(){
 
         Utilisateur User = UtilisateurService.GetInfos(IDClient);
 

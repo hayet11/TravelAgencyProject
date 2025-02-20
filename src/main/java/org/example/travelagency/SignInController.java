@@ -6,6 +6,7 @@ import enums.Role;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -81,18 +82,22 @@ public class SignInController {
         // Charge l'interface correspondante
 
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-                Scene scene = new Scene(fxmlLoader.load());
-                if (utilisateur.getRole()!= CLIENT){
+
+                if (utilisateur.getRole()== CLIENT){
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+                    Parent root = fxmlLoader.load();
                     WelcomeCLientController controller = fxmlLoader.getController();
-                    controller.initialize(utilisateur.getId());
+                    controller.setClientID(utilisateur.getId());
+                    Scene scene = new Scene(root);
                     System.out.println("ID dans login"+utilisateur.getId());
                     Stage stage = new Stage();
-                    stage.setTitle("Sign Up");
+                    stage.setTitle("Login");
                     stage.setScene(scene);
                     stage.show();
                 }
                 else{
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+                    Scene scene = new Scene(fxmlLoader.load());
                     Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
                     stage.setScene(scene);
                     stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
