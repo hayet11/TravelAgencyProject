@@ -2,6 +2,7 @@ package org.example.travelagency;
 
 import Entities.Utilisateur;
 import Services.Impl.UtilisateurServiceImpl;
+import enums.Role;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +17,8 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+
+import static enums.Role.CLIENT;
 
 public class SignInController {
     @FXML
@@ -41,7 +44,7 @@ public class SignInController {
         UtilisateurServiceImpl utilisateurService = new UtilisateurServiceImpl();
         Utilisateur utilisateur = utilisateurService.seConnecter(email, password);
         if (utilisateur != null) {
-            showAlert("Succès", "Connexion réussie !", Alert.AlertType.INFORMATION);
+//            showAlert("Succès", "Connexion réussie !", Alert.AlertType.INFORMATION);
             redirigerUtilisateur(utilisateur);
         } else {
             showAlert("Erreur", "Email ou mot de passe incorrect !", Alert.AlertType.ERROR);
@@ -65,7 +68,7 @@ public class SignInController {
                 fxmlFile = "WelcomePage.fxml";  // Remplace par le fichier FXML de l'interface Agent
                 break;
             case CLIENT:
-                fxmlFile = "ListFlight.fxml";  // Remplace par le fichier FXML de l'interface Client
+                fxmlFile = "WelcomeClinet.fxml";
                 break;
             case SUPPORT_TECH:
                 fxmlFile = "listeAgents.fxml";  // Remplace par le fichier FXML de l'interface Support Technique
@@ -76,18 +79,32 @@ public class SignInController {
         }
 
         // Charge l'interface correspondante
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Scene scene = new Scene(fxmlLoader.load());
 
-            Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
-            stage.setScene(scene);
-            stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert("Erreur", "Impossible de charger l'interface de l'utilisateur.", Alert.AlertType.ERROR);
-        }
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Scene scene = new Scene(fxmlLoader.load());
+                if (utilisateur.getRole()!= CLIENT){
+                    WelcomeCLientController controller = fxmlLoader.getController();
+                    controller.initialize(utilisateur.getId());
+                    System.out.println("ID dans login"+utilisateur.getId());
+                    Stage stage = new Stage();
+                    stage.setTitle("Sign Up");
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                else{
+                    Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
+                    stage.setScene(scene);
+                    stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
+                    stage.show();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Erreur", "Impossible de charger l'interface de l'utilisateur.", Alert.AlertType.ERROR);
+            }
+
+
     }
 
     @FXML
