@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -148,6 +149,7 @@ public class BookingListController {
         }
 
     }
+
     @FXML
     private void onEdit(VoyageOrganise voyage) {
         try {
@@ -162,6 +164,30 @@ public class BookingListController {
             stage.setTitle("Modifier Voyage");
             stage.setScene(scene);
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void changerVue(ActionEvent event) {
+        try {
+            Object source = event.getSource();
+            String fxmlFile = null;
+
+            if (source instanceof Hyperlink) {
+                Hyperlink hyperlink = (Hyperlink) source;
+                fxmlFile = (String) hyperlink.getUserData();
+            } else if (source instanceof MenuItem) {
+                MenuItem menuItem = (MenuItem) source;
+                fxmlFile = (String) menuItem.getUserData();
+            }
+            if (fxmlFile != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/travelagency/" + fxmlFile));
+                Parent newView = loader.load();
+                AnchorPane rootPane = (AnchorPane) tableView.getScene().getRoot();
+                rootPane.getChildren().setAll(newView);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

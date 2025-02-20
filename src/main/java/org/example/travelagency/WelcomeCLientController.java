@@ -2,12 +2,13 @@ package org.example.travelagency;
 
 import Entities.Utilisateur;
 import Services.Impl.UtilisateurServiceImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,11 +56,13 @@ public class WelcomeCLientController {
         UtilisateurService = new UtilisateurServiceImpl();
 
     }
-    public void setClientID(int IDClient){
-        this.IDClient =IDClient ;
+
+    public void setClientID(int IDClient) {
+        this.IDClient = IDClient;
         LoadData();
     }
-    public void LoadData(){
+
+    public void LoadData() {
 
         Utilisateur User = UtilisateurService.GetInfos(IDClient);
 
@@ -71,8 +74,25 @@ public class WelcomeCLientController {
 
 
     }
+
     public void goToSejours() throws IOException {
         openWindow("ListeSejourClient.fxml", "Sejour Hotels", 1250, 400);
+    }
+
+    public void goToAide() throws IOException {
+        openWindow("AideUser.fxml", "Aide", 1280, 800);
+    }
+
+    public void goToVols() throws IOException {
+        openWindow("ListFlight.fxml", "Vols", 1280, 800);
+    }
+
+    public void goToVoyages() throws IOException {
+        openWindow("ListVoyage.fxml", "Voyages", 1280, 800);
+    }
+
+    public void goToReservations() throws IOException {
+        openWindow("AideUser.fxml", "Aide", 1280, 800);
     }
 
 
@@ -84,4 +104,5 @@ public class WelcomeCLientController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

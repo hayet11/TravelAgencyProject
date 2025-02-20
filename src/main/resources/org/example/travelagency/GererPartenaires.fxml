@@ -15,11 +15,11 @@
                         <MenuItem text="Ajouter un vol" onAction="#changerVue" userData="AddFlight.fxml"/>
                     </Menu>
                     <Menu text="Voyages">
-                        <MenuItem text="Tous les voyages" onAction="#changerVue" userData="ListVoyage.fxml"/>
+                        <MenuItem text="Tous les voyages" onAction="#changerVue" userData="BookingList.fxml"/>
                         <MenuItem text="Nouveau voyage" onAction="#changerVue" userData="AddTripForm.fxml"/>
                     </Menu>
                     <Menu text="Séjours">
-                        <MenuItem text="Hôtels"/>
+                        <MenuItem text="Hôtels" onAction="#changerVue" userData="SejoutHotelList.fxml"/>
                         <MenuItem text="Activités"/>
                     </Menu>
                     <Menu text="Partenaires">

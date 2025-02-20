@@ -13,16 +13,16 @@
                     <MenuItem text="Consulter les Séjours" onAction="#goToSejours"/>
                 </Menu>
                 <Menu text="Vols">
-                    <MenuItem text="Consulter les Vols" />
+                    <MenuItem text="Consulter les Vols" onAction="#goToVols"/>
                 </Menu>
-                <Menu text="Voyages Organisés">
-                    <MenuItem text="Consulter les Voyages" />
+                <Menu text="Voyages Organisés" onAction="#goToVoyages">
+                    <MenuItem text="Consulter les Voyages"/>
                 </Menu>
                 <Menu text="Mes Réservations">
-                    <MenuItem text="Voir mes Réservations" />
+                    <MenuItem text="Voir mes Réservations" onAction="#goToReservations"/>
                 </Menu>
                 <Menu text="Aide">
-                    <MenuItem text="Support" />
+                    <MenuItem text="Support" onAction="#goToAide"/>
                 </Menu>
             </menus>
         </MenuBar>
@@ -39,26 +39,31 @@
                                text="Mon Profil"/>
 
                         <Label layoutX="30.0" layoutY="50.0" text="Nom :" style="-fx-font-size: 14px;"/>
-                        <Label fx:id="nomLabel" layoutX="170.0" layoutY="50.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+                        <Label fx:id="nomLabel" layoutX="170.0" layoutY="50.0"
+                               style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
 
                         <Label layoutX="30.0" layoutY="80.0" text="Prenom :" style="-fx-font-size: 14px;"/>
-                        <Label fx:id="prenomLabel" layoutX="170.0" layoutY="80.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+                        <Label fx:id="prenomLabel" layoutX="170.0" layoutY="80.0"
+                               style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
 
 
                         <Label layoutX="30.0" layoutY="110.0" text="Email :" style="-fx-font-size: 14px;"/>
-                        <Label fx:id="emailLabel" layoutX="170.0" layoutY="110.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+                        <Label fx:id="emailLabel" layoutX="170.0" layoutY="110.0"
+                               style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
 
                         <Label layoutX="30.0" layoutY="140.0" text="Téléphone :" style="-fx-font-size: 14px;"/>
-                        <Label fx:id="telephoneLabel" layoutX="170.0" layoutY="140.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+                        <Label fx:id="telephoneLabel" layoutX="170.0" layoutY="140.0"
+                               style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
 
                         <Label layoutX="30.0" layoutY="170.0" text="Date de Naissance :" style="-fx-font-size: 14px;"/>
-                        <Label fx:id="DateNaissanceLabel" layoutX="170.0" layoutY="170.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+                        <Label fx:id="DateNaissanceLabel" layoutX="170.0" layoutY="170.0"
+                               style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
 
                         <!-- Bouton Modifier Profil -->
-<!--                        <Button fx:id="modifierProfilButton" text="Modifier mon Profil"-->
-<!--                                layoutX="500.0" layoutY="180.0"-->
-<!--                                style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-border-radius: 5px; -fx-padding: 5 15;"-->
-<!--                                onAction="#modifierProfil"/>-->
+                        <!--                        <Button fx:id="modifierProfilButton" text="Modifier mon Profil"-->
+                        <!--                                layoutX="500.0" layoutY="180.0"-->
+                        <!--                                style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-border-radius: 5px; -fx-padding: 5 15;"-->
+                        <!--                                onAction="#modifierProfil"/>-->
                     </children>
                 </AnchorPane>
             </children>

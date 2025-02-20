@@ -7,7 +7,7 @@
             xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="org.example.travelagency.AideUserController">
     <children>
-        <MenuBar layoutX="0" layoutY="0" prefWidth="744.0">
+        <MenuBar layoutX="0" layoutY="0" prefWidth="744.0" fx:id="menuAgent">
             <menus>
                 <Menu text="Vols">
                     <MenuItem text="Liste des vols" onAction="#changerVue" userData="ListFlight.fxml"/>
@@ -29,6 +29,7 @@
                 </Menu>
             </menus>
         </MenuBar>
+        
         <!-- Menu vertical -->
         <AnchorPane layoutY="25.0" prefWidth="200.0" prefHeight="775.0" style="-fx-background-color: #023047;">
             <children>
