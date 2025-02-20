@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="744.0"
+            xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.example.travelagency.WelcomeCLientController">
+    <children>
+        <!-- Barre de menu -->
+        <MenuBar layoutX="0" layoutY="0" prefWidth="744.0">
+            <menus>
+                <Menu text="Séjours">
+                    <MenuItem text="Consulter les Séjours" onAction="#goToSejours"/>
+                </Menu>
+                <Menu text="Vols">
+                    <MenuItem text="Consulter les Vols" />
+                </Menu>
+                <Menu text="Voyages Organisés">
+                    <MenuItem text="Consulter les Voyages" />
+                </Menu>
+                <Menu text="Mes Réservations">
+                    <MenuItem text="Voir mes Réservations" />
+                </Menu>
+                <Menu text="Aide">
+                    <MenuItem text="Support" />
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <!-- Main Content Area -->
+        <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="350.0" prefWidth="720.0"
+                    style="-fx-background-color: #f3f3f3; -fx-padding: 20;">
+            <children>
+                <!-- Dashboard Profil -->
+                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="700.0"
+                            style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+                    <children>
+                        <Label layoutX="15.0" layoutY="10.0" style="-fx-font-size: 20px; -fx-font-weight: bold;"
+                               text="Mon Profil"/>
+
+                        <Label layoutX="30.0" layoutY="50.0" text="Nom :" style="-fx-font-size: 14px;"/>
+                        <Label fx:id="nomLabel" layoutX="170.0" layoutY="50.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+
+                        <Label layoutX="30.0" layoutY="80.0" text="Prenom :" style="-fx-font-size: 14px;"/>
+                        <Label fx:id="prenomLabel" layoutX="170.0" layoutY="80.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+
+
+                        <Label layoutX="30.0" layoutY="110.0" text="Email :" style="-fx-font-size: 14px;"/>
+                        <Label fx:id="emailLabel" layoutX="170.0" layoutY="110.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+
+                        <Label layoutX="30.0" layoutY="140.0" text="Téléphone :" style="-fx-font-size: 14px;"/>
+                        <Label fx:id="telephoneLabel" layoutX="170.0" layoutY="140.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+
+                        <Label layoutX="30.0" layoutY="170.0" text="Date de Naissance :" style="-fx-font-size: 14px;"/>
+                        <Label fx:id="DateNaissanceLabel" layoutX="170.0" layoutY="170.0" style="-fx-font-size: 14px; -fx-text-fill: #000;"/>
+
+                        <!-- Bouton Modifier Profil -->
+<!--                        <Button fx:id="modifierProfilButton" text="Modifier mon Profil"-->
+<!--                                layoutX="500.0" layoutY="180.0"-->
+<!--                                style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-border-radius: 5px; -fx-padding: 5 15;"-->
+<!--                                onAction="#modifierProfil"/>-->
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

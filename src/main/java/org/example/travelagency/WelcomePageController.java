@@ -70,6 +70,10 @@ public class WelcomePageController {
         openWindow("ListFlight.fxml", "Liste des vols", 1250, 400);
     }
 
+
+    public void GoListSejours() throws IOException {
+        openWindow("SejoutHotelList.fxml", "Liste des sejours hotels", 1250, 400);
+    }
     public void AddFlight() throws IOException {
         openWindow("AddFlight.fxml", "Ajouter un vol", 1250, 400);
     }

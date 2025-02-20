@@ -26,7 +26,7 @@
                     <MenuItem text="Nouveau voyage" onAction="#AddTrip"/>
                 </Menu>
                 <Menu text="Séjours">
-                    <MenuItem text="Hôtels"/>
+                    <MenuItem text="Hôtels" onAction="#GoListSejours"/>
                     <MenuItem text="Activités"/>
                 </Menu>
                 <Menu text="Partenaires">

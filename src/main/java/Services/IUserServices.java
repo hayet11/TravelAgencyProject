@@ -12,6 +12,7 @@ public interface IUserServices{
     public Utilisateur getUtilisateurById(int id);
     public List<Utilisateur> getAllUtilisateurs() ;
     public Utilisateur seConnecter(String email, String motDePasse);
+    public Utilisateur GetInfos(int ID);
     public  boolean emailExiste(String email);
     public boolean sInscrire(Utilisateur utilisateur);
 //    public void sendEmailToAgent(Utilisateur agent) throws MessagingException;

@@ -165,6 +165,33 @@ public class UtilisateurServiceImpl implements IUserServices {
         return null; // Si l'utilisateur n'existe pas
     }
 
+    public Utilisateur GetInfos(int ID) {
+        String sql = "SELECT * FROM users WHERE id = ? ";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, String.valueOf(ID));
+
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return new Utilisateur(
+                        rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("mot_de_passe"),
+                        rs.getDate("date_naissance").toLocalDate(),
+                        rs.getString("telephone"),
+                        rs.getString("email"),
+                        Role.valueOf(rs.getString("role"))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Si l'utilisateur n'existe pas
+    }
+
 
     // ➤ Vérifier si un email existe déjà
     public  boolean emailExiste(String email) {
