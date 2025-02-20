@@ -81,33 +81,32 @@ public class SignInController {
 
         // Charge l'interface correspondante
 
-            try {
+        try {
 
-                if (utilisateur.getRole()== CLIENT){
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-                    Parent root = fxmlLoader.load();
-                    WelcomeCLientController controller = fxmlLoader.getController();
-                    controller.setClientID(utilisateur.getId());
-                    Scene scene = new Scene(root);
-                    System.out.println("ID dans login"+utilisateur.getId());
-                    Stage stage = new Stage();
-                    stage.setTitle("Login");
-                    stage.setScene(scene);
-                    stage.show();
-                }
-                else{
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
-                    stage.setScene(scene);
-                    stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
-                    stage.show();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert("Erreur", "Impossible de charger l'interface de l'utilisateur.", Alert.AlertType.ERROR);
+            if (utilisateur.getRole() == CLIENT) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Parent root = fxmlLoader.load();
+                WelcomeCLientController controller = fxmlLoader.getController();
+                controller.setClientID(utilisateur.getId());
+                Scene scene = new Scene(root);
+                System.out.println("ID dans login" + utilisateur.getId());
+                Stage stage = new Stage();
+                stage.setTitle("Login");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) loginButton.getScene().getWindow(); // Utilise l'élément de la scène actuelle pour récupérer le stage
+                stage.setScene(scene);
+                stage.setTitle("Interface " + utilisateur.getRole());  // Définit le titre de la fenêtre selon le rôle
+                stage.show();
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger l'interface de l'utilisateur.", Alert.AlertType.ERROR);
+        }
 
 
     }
@@ -121,8 +120,8 @@ public class SignInController {
             Stage stage = (Stage) loginButton.getScene().getWindow(); // Tu peux utiliser un autre élément de la scène actuelle pour récupérer le stage
             stage.setScene(scene);
             stage.setTitle("Mot de passe oublié");
-            stage.setWidth(1280);  // Largeur de la fenêtre
-            stage.setHeight(800);  // Hauteur de la fenêtre
+            stage.setWidth(1000);  // Largeur de la fenêtre
+            stage.setHeight(600);  // Hauteur de la fenêtre
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,8 +137,8 @@ public class SignInController {
             Stage stage = (Stage) loginButton.getScene().getWindow(); // Récupérer la fenêtre actuelle
             stage.setScene(scene);
             stage.setTitle("Créer un nouveau compte");
-            stage.setWidth(1280);  // Largeur de la fenêtre
-            stage.setHeight(800);  // Hauteur de la fenêtre
+            stage.setWidth(1000);  // Largeur de la fenêtre
+            stage.setHeight(600);  // Hauteur de la fenêtre
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

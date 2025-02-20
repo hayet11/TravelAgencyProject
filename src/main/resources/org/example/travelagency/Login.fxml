@@ -9,46 +9,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="744.0"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0"
+            prefWidth="1000.0"
             xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.travelagency.SignInController">
 
-   <children>
-      <!-- Panneau gauche -->
-      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #023047;">
-         <children>
-            <ImageView fitHeight="120.0" fitWidth="180.0" layoutX="60.0" layoutY="140.0"
-                       pickOnBounds="true" preserveRatio="true"/>
-         </children>
-      </AnchorPane>
+    <children>
+        <!-- Panneau gauche -->
+        <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #023047;">
+            <children>
+                <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="65.0" layoutY="210.0"
+                           pickOnBounds="true" preserveRatio="true"/>
+            </children>
+        </AnchorPane>
 
-      <!-- Panneau droit -->
-      <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="444.0" style="-fx-background-color: #f8f9fa;">
-         <children>
-            <VBox layoutX="70.0" layoutY="90.0" spacing="15.0" alignment="CENTER">
-               <children>
-                  <Label text="Sign In" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #023047;" />
+        <!-- Panneau droit -->
+        <AnchorPane layoutX="400.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f8f9fa;">
+            <children>
+                <VBox layoutX="100.0" layoutY="150.0" spacing="20.0" alignment="CENTER">
+                    <children>
+                        <Label text="Sign In"
+                               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #023047;"/>
 
-                  <TextField fx:id="loginField" promptText="Login"
-                             style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
-                                          -fx-border-radius: 8px; -fx-padding: 10px;"/>
+                        <TextField fx:id="loginField" promptText="Login"
+                                   style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
+                                          -fx-border-radius: 8px; -fx-padding: 12px;"/>
 
-                  <PasswordField fx:id="passwordField" promptText="Password"
-                                 style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
-                                              -fx-border-radius: 8px; -fx-padding: 10px;"/>
+                        <PasswordField fx:id="passwordField" promptText="Password"
+                                       style="-fx-background-color: #ffffff; -fx-border-color: #8ECAE6;
+                                              -fx-border-radius: 8px; -fx-padding: 12px;"/>
 
-                  <!-- Centrage du bouton -->
-                  <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
-                          style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px;"/>
-                  <!-- Ajout d'une VBox pour centrer les liens -->
-                  <VBox spacing="5.0" alignment="CENTER">
-                     <Hyperlink text="Forgot password?" onAction="#handleForgotPassword" style="-fx-text-fill: #023047;" />
-                     <Hyperlink text="Create new account" onAction="#handleCreateNewAccount" style="-fx-text-fill: #023047;" />
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </children>
+                        <!-- Centrage du bouton -->
+                        <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
+                                style="-fx-background-color: #023047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 10px;"/>
+                        <!-- Ajout d'une VBox pour centrer les liens -->
+                        <VBox spacing="10.0" alignment="CENTER">
+                            <Hyperlink text="Forgot password?" onAction="#handleForgotPassword"
+                                       style="-fx-text-fill: #023047;"/>
+                            <Hyperlink text="Create new account" onAction="#handleCreateNewAccount"
+                                       style="-fx-text-fill: #023047;"/>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>
