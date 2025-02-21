@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="1000.0"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="744.0"
             xmlns="http://javafx.com/javafx/23.0.1" fx:controller="org.example.travelagency.WelcomePageController">
     <children>
         <!-- Barre de menu -->
-        <MenuBar layoutX="0" layoutY="0" prefWidth="1000.0">
+        <MenuBar layoutX="0" layoutY="0" prefWidth="744.0">
             <menus>
                 <Menu text="Vols">
                     <MenuItem text="Liste des vols" onAction="#FlightList"/>
@@ -35,50 +35,54 @@
                 <Menu text="Aide">
                     <MenuItem text="Consulter la rubrique d'aide" onAction="#changerVue" userData="AideUser.fxml"/>
                 </Menu>
+                <Menu text="Reclamation">
+                    <MenuItem text="Voir les Réclamations" onAction="#viewReclamations"/>
+                    <MenuItem text="Voir les Statistiques" onAction="#viewReclamationStats"/>
+                </Menu>
             </menus>
         </MenuBar>
 
         <!-- Sidebar avec ListView -->
-        <AnchorPane layoutY="25" prefHeight="575.0" prefWidth="150.0"
+        <AnchorPane layoutY="25" prefHeight="375.0" prefWidth="127.0"
                     style="-fx-background-color: #023047; -fx-padding: 10;">
             <children>
-                <ListView fx:id="menuList" layoutX="5.0" layoutY="20.0" prefHeight="550.0" prefWidth="140.0"
+                <ListView fx:id="menuList" layoutX="5.0" layoutY="20.0" prefHeight="350.0" prefWidth="117.0"
                           style="-fx-background-color: #023047; -fx-text-fill: WHITE;"/>
             </children>
         </AnchorPane>
 
         <!-- Main Content Area -->
-        <AnchorPane layoutX="160.0" layoutY="25" prefHeight="575.0" prefWidth="840.0"
+        <AnchorPane layoutX="140.0" layoutY="25" prefHeight="375.0" prefWidth="600.0"
                     style="-fx-background-color: #f3f3f3; -fx-padding: 20;">
             <children>
                 <!-- Dashboard Section -->
-                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="820.0"
+                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="580.0"
                             style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
                     <children>
                         <Label layoutX="15.0" layoutY="10.0" style="-fx-font-size: 20px; -fx-font-weight: bold;"
                                text="Dashboard |"/>
-                        <Label layoutX="150.0" layoutY="10.0" style="-fx-font-size: 20px;" text="Bienvenue "/>
-                        <Label fx:id="Name" layoutX="250.0" layoutY="10.0"
+                        <Label layoutX="130.0" layoutY="10.0" style="-fx-font-size: 20px;" text="Bienvenue "/>
+                        <Label fx:id="Name" layoutX="220.0" layoutY="10.0"
                                style="-fx-font-size: 20px; -fx-text-fill: #1D3557;" text="User"/>
 
                         <!-- Tableau -->
-                        <TableView fx:id="statsTable" layoutX="15.0" layoutY="50.0" prefHeight="250" prefWidth="790"
+                        <TableView fx:id="statsTable" layoutX="15.0" layoutY="50.0" prefHeight="150" prefWidth="550"
                                    style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 10; -fx-background-radius: 10;">
                             <columns>
-                                <TableColumn fx:id="categoryColumn" text="Catégorie" prefWidth="250"/>
-                                <TableColumn fx:id="todayColumn" text="Aujourd’hui" prefWidth="180"/>
-                                <TableColumn fx:id="generalColumn" text="Général" prefWidth="180"/>
-                                <TableColumn fx:id="sumColumn" text="Somme (TND)" prefWidth="180"/>
+                                <TableColumn fx:id="categoryColumn" text="Catégorie" prefWidth="180"/>
+                                <TableColumn fx:id="todayColumn" text="Aujourd’hui" prefWidth="130"/>
+                                <TableColumn fx:id="generalColumn" text="Général" prefWidth="130"/>
+                                <TableColumn fx:id="sumColumn" text="Somme (TND)" prefWidth="100"/>
                             </columns>
                         </TableView>
 
                         <!-- Ligne Total Somme en dessous du tableau -->
-                        <HBox layoutX="15.0" layoutY="320.0" prefWidth="790"
+                        <HBox layoutX="15.0" layoutY="210.0" prefWidth="550"
                               style="-fx-background-color: #e8e8e8; -fx-padding: 5; -fx-border-radius: 5;">
-                            <Region prefWidth="250"/>
                             <Region prefWidth="180"/>
+                            <Region prefWidth="130"/>
                             <Label text="Total somme" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-                            <Label fx:id="totalSumLabel" prefWidth="180"
+                            <Label fx:id="totalSumLabel" prefWidth="100"
                                    style="-fx-font-weight: bold; -fx-text-fill: #d62828; -fx-alignment: center-right;"/>
                         </HBox>
                     </children>

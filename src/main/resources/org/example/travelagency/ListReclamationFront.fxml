@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.travelagency.ListReclamationFrontController">
+    <children>
+        <!-- Sidebar -->
+        <AnchorPane prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #023047;">
+            <VBox layoutX="10.0" layoutY="20.0" spacing="20.0" />
+        </AnchorPane>
+
+        <!-- Main Content -->
+        <AnchorPane layoutX="220.0" layoutY="70.0" prefHeight="500.0" prefWidth="1010.0" style="-fx-background-color: #f9f9f9;">
+            <VBox spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <!-- Trier Button -->
+                <HBox alignment="CENTER_RIGHT" />
+
+                <!-- TableView for Reclamations -->
+                <TableView fx:id="reclamationTable" prefHeight="300.0" prefWidth="950.0">
+                    <columns>
+                        <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email" />
+                        <TableColumn fx:id="typeColumn" prefWidth="150.0" text="Type" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="300.0" text="Description" />
+                        <TableColumn fx:id="etatColumn" prefWidth="150.0" text="État" />
+                        <TableColumn fx:id="actionColumn" prefWidth="150.0" text="Actions" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </AnchorPane>
+    </children>
+</AnchorPane>

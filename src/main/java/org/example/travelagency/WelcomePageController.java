@@ -63,32 +63,41 @@ public class WelcomePageController {
     }
 
     public void AddTrip() throws IOException {
-        openWindow("AddTripForm.fxml", "Ajout d'un voyage", 1000, 600);
+        openWindow("AddTripForm.fxml", "Ajout d'un voyage", 744, 500);
     }
 
     public void FlightList() throws IOException {
-        openWindow("ListFlight.fxml", "Liste des vols", 1000, 600);
+        openWindow("ListFlight.fxml", "Liste des vols", 1250, 400);
+    }
+
+    @FXML
+    private void viewReclamations() throws IOException {
+        openWindow("ListReclamationBack.fxml", "Liste des Réclamations", 1250, 400);
+    }
+
+    @FXML
+    private void viewReclamationStats() throws IOException {
+        openWindow("StatReclamationBack.fxml", "Statistiques des Réclamations", 1250, 400);
     }
 
 
     public void GoListSejours() throws IOException {
-        openWindow("SejoutHotelList.fxml", "Liste des sejours hotels", 1000, 600);
+        openWindow("SejoutHotelList.fxml", "Liste des sejours hotels", 1250, 400);
     }
-
     public void AddFlight() throws IOException {
-        openWindow("AddFlight.fxml", "Ajouter un vol", 1000, 600);
+        openWindow("AddFlight.fxml", "Ajouter un vol", 1250, 400);
     }
 
     public void GoListTrip() throws IOException {
-        openWindow("BookingList.fxml", "Liste des voyages", 1000, 600);
+        openWindow("BookingList.fxml", "Liste des voyages", 800, 400);
     }
 
     public void GoPartenaires() throws IOException {
-        openWindow("BookingList.fxml", "Gestion des partenaires", 1000, 600);
+        openWindow("BookingList.fxml", "Gestion des partenaires", 1280, 800);
     }
 
     public void GoAide() throws IOException {
-        openWindow("AideUser.fxml", "Aide", 1000, 600);
+        openWindow("AideUser.fxml", "Aide", 1280, 800);
     }
 
     private void openWindow(String fxml, String title, int width, int height) throws IOException {
